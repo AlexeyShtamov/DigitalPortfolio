@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Test {
     @GetMapping()
     public String index(){
+        System.out.println();
         return "index";
     }
 }
