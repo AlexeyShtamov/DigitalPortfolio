@@ -1,0 +1,47 @@
+.left__links {
+    position: absolute;
+    top: 188px;
+    left: 99px;
+    width: 297px;
+    height: 275px;
+}
+
+.main__specialists {
+    position: absolute; 
+    width: 196px;
+    height: 44px;
+}
+
+.specialists__list a {
+    position: relative;
+    white-space: nowrap;
+    height: 22px;
+    width: auto;
+    top: 55px;
+    padding-top: 11px;
+}
+
+.all__specialists {
+    position: absolute;
+    width: 36px;
+    height: 22px;
+}
+
+.arrow__controls {
+     position: absolute;
+     left: 758px;
+     top: 1904px;
+}
+
+#searchResults__links {
+    position: absolute;
+    left: 72px;
+}
+
+.paging__pagelink {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+}

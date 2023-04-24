@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <link rel="icon" href="/images/footer/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="/js/script.js"></script>
+    <script src="/js/registration.js"></script>
+    <script src="/js/login-acc.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <div class="header__section">
+            <a href="index.html"><img src="/images/header/logo.png" alt="logo" class="header__logo"></a>
+            <a href="specialists.html" class="header__item specialists">Специалистам</a>
+            <a href="teams.html" class="header__item teams">Командам</a>
+            <a href="#" class="header__item search" id="search__js" onclick="openSearch()">Поиск</a>
+            <a href="#" class="header__item feedbacks">Мои отклики</a>
+        </div>
+        <div class="header__section">
+            <div class="bell"><a href="profile.html"><img src="/images/header/bell.svg" alt="bell"></a></div>
+            <div class="profile__avatar">
+                <!--аватар пользователя получать с бд-->
+                <img src="/images/header/none_avatar.svg" alt="profile" onclick="openProfile()">
+            </div>
+            <div id="login__window">
+                <div class="login__window__box">
+                    <a href="login.html" class="profile__button login__button txt">Войти</a>
+                    <a href="registration.html" class="profile__button register__button txt">Зарегистрироваться</a>
+                </div>
+            </div>
+        </div>
+        <div id="search__box">
+            <input class="search-txt" type="search" placeholder="Введите профессию">
+            <div class="search-bg"><img src="/images/header/search-bg.png" alt="search"></div>
+            <a href="#">
+                <!--при нажатии на bell или "enter" выполняется поиск-->
+                <div class="magnifier-1"><img src="/images/header/magnifier-1.svg" alt="magnifier-1"></div>
+                <div class="magnifier-2"><img src="/images/header/magnifier-2.svg" alt="magnifier-2"></div>
+            </a>
+        </div>
+        <div id="notifications">
+            <div class="notifications__box">
+                <!--получать уведомления с бд-->
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="main__right">
+            <img src="/images/main/login__bg.jpg" alt="login__bg" class="login__bg__image">
+            <div class="blurred__window">
+                <div class="txt4 blurred__text">
+                    “Какие-то хорошие слова”
+                </div>
+                <div class="txt4 blurred__author">
+                    Какой-то человек
+                </div>
+            </div>
+        </div>
+        <div class="main__specialists">
+            <button class="txt4 registration__button" id="specialists__button" onclick="openRegistration()">Специалистам</button>
+            <div id="specialists__window">
+                <h1 class="headline txt5">Добро пожаловать!</h1>
+                <p class="subtitle txt6">Добро пожаловать! Введите эл. почту и пароль.</p>
+                <form action="#" id="login__specialist">
+                    <label for="email" class="txt6 label__email">Email</label>
+                    <input type="text" name="email__specialist" placeholder="ivanov.ivan@pochta.ru" class="txt input input__email" required>
+                    <label for="psw" class="txt6 label__psw">Пароль</label>
+                    <input type="text" name="psw__specialist" placeholder="Введите пароль..." class="txt input input__psw"required>
+
+                    <button class="txt4 bottom__button__login">Войти</button> 
+                    <button class="bottom__button__google txt4">
+                        <img src="/images/main/google__logo.svg" alt="google__logo" class="google__logo">
+                        Войти с Google
+                    </button>
+                    <!--сделать вывод при неправильно введённых данных-->
+                    <label class="checkbox__label">
+                        <input type="checkbox" checked name="remember" class="checkbox">
+                        <span class="checkbox__marker"></span>
+                        <span class="txt6 remember__me">Запомнить меня</span>
+                    </label>
+                    <a href="#" class="txt6 forget__psw">Забыли пароль?</a>
+                    <!--сделать ссылку на забыли пароль-->
+                </form>
+                <div class="txt6 not__registered">
+                    Вы не зарегистрированы? <a href="registration.html" class="register__end">Зарегистрируйтесь бесплатно!</a>
+                </div>
+            </div>
+        </div>
+        <div class="main__teams">
+            <button class="txt4 registration__button" id="teams__button" onclick="openRegistration()">Командам</button>
+            <div id="teams__window">
+                <h1 class="headline txt5">Добро пожаловать!</h1>
+                <p class="subtitle txt6">Добро пожаловать! Введите название команды и пароль.</p>
+                <form action="#">
+                    <label for="email" class="txt6 label__team-name">Название команды</label>
+                    <input type="text" name="team__name" placeholder="DigitalPortfolio123" class="txt input input__team-name" required>
+                    <label for="psw" class="txt6 label__psw">Пароль</label>
+                    <input type="text" name="psw" placeholder="Введите пароль..." class="txt input input__psw" required>
+
+                    <button class="txt4 bottom__button__login">Войти</button>
+                    <button class="bottom__button__google txt4">
+                        <img src="/images/main/google__logo.svg" alt="google__logo" class="google__logo">
+                        Войти с Google
+                    </button>
+                    <!--сделать вывод при неправильно введённых данных-->
+                    <label class="checkbox__label">
+                        <input type="checkbox" checked name="remember" class="checkbox">
+                        <span class="checkbox__marker"></span>
+                        <span class="txt6 remember__me">Запомнить меня</span>
+                    </label>
+                    <a href="#" class="txt6 forget__psw">Забыли пароль?</a>
+                    <!--сделать ссылку на забыли пароль-->
+                </form>
+                <div class="txt6 not__registered">
+                    Вы не зарегистрированы? <a href="registration.html" class="register__end">Зарегистрируйтесь бесплатно!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" style="top: 1057px">
+        <div class="txt email__text">Подпишитесь на нашу рассылку, чтобы получать актуальную информацию по Вашим запросам.</div>
+        <div class="email__container">
+            <div class="txt email__headline">Эл. почта:</div>
+            <input class="txt email__example" type="text" placeholder="ivanov.ivan@pochta.ru">
+            <button class="txt" id="confirmation">OK</button>
+            <!--отправлять почту в бд-->
+        </div>
+        <div class="footer__bottom">
+            <a href="index.html"><img src="/images/footer/logo.png" alt="footer_logo" class="footer__logo"></a>
+            <a href="#"><img src="/images/footer/telegram.svg" alt="telegram" class="telegram__logo"></a>
+            <a href="#"><img src="/images/footer/vk.svg" alt="vk" class="vk__logo"></a>
+            <a href="mailto:zef1rflis@yandex.ru" class="txt footer__creator-mail">zef1rflis@yandex.ru</a>
+        </div>
+    </div>
+</body>
+</html>

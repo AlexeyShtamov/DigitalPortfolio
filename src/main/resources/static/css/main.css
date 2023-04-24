@@ -1,0 +1,129 @@
+.main__information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main__image {
+    z-index: 0;
+    position: absolute;
+    width: 620px;
+    height: 500px;
+    left: 650px;
+    top: 183px;
+    }
+
+.headline {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 472px;
+    height: 88px;
+    left: 99px;
+    top: 198px;
+}
+
+.subheadline {
+    position: absolute;
+    width: 483px;
+    height: 88px;
+    left: 99px;
+    top: 305px;
+}
+
+#learn__more {
+    position: absolute;
+    width: 130px;
+    height: 17px;
+    left: 99px;
+    top: 453px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-decoration-line: underline;
+
+    color: #000000;
+}
+
+.main__portfolio {
+    position: absolute;
+    width: 108px;
+    height: 22px;
+    left: 1331px;
+    top: 198px;
+}
+
+.main__exp {
+    position: absolute;
+    width: 130px;
+    height: 22px;
+    left: 1678px;
+    top: 198px;
+}
+
+.main__teams {
+    position: absolute;
+    width: 87px;
+    height: 22px;
+    left: 1331px;
+    top: 339px;
+}
+
+.main__specialists {
+    position: absolute;
+    width: 128px;
+    height: 22px;
+    left: 1678px;
+    top: 339px;
+}
+
+.count__portfolio {
+    position: absolute;
+    width: 92px;
+    height: 59px;
+    left: 1331px;
+    top: 229px;
+}
+
+.count__exp {
+    position: absolute;
+    width: 47px;
+    height: 59px;
+    left: 1678px;
+    top: 229px;
+}
+
+.count__teams {
+    position: absolute;
+    width: 101px;
+    height: 59px;
+    left: 1331px;
+    top: 370px;
+}
+
+.count__specialists {
+    position: absolute;
+    width: 118px;
+    height: 59px;
+    left: 1678px;
+    top: 370px;
+}
+
+.portfolio__section {
+    position: absolute;
+    width: 217px;
+    height: 44px;
+    left: 99px;
+    top: 760px;
+}
+
+.teams__section {
+    position: absolute;
+    width: 175px;
+    height: 44px;
+    left: 100px;
+    top: 1463px;
+}

@@ -1,0 +1,383 @@
+.left__links {
+    position: absolute;
+    left: 100px;
+    top: 202px;
+}
+
+.profile__avatar__main {
+    position: absolute;
+    left: 33px;
+    height: 309px;
+    width: 309px;
+    border-radius: 50%;
+}
+
+.user__name {
+    position: absolute;
+    top: 364px;
+    width: auto;
+    white-space: nowrap;
+}
+
+.edit__avatar {
+    position: absolute;
+    top: 320px;
+    left: 88px;
+}
+
+.text__edit {
+    position: absolute;
+    left: 108px;
+    top: 324px;
+    white-space: nowrap;
+    line-height: 15px;
+    color: #A69E9E;
+}
+
+.profile__links {
+    margin-top: 25px;
+    position: absolute;
+    top: 433px;
+}
+
+.profile__buttons {
+    border: none;
+    background-color: #fff;
+    margin-bottom: 25px;
+}
+
+.profile__buttons:hover{
+    font-weight: 600;
+}
+
+input {
+    background-color: rgba(217, 217, 217, 0.4);
+    border: none;
+    border-radius: 50px;
+    outline: none;
+    vertical-align: middle;
+    padding-left: 15px;
+    appearance: none;
+    overflow: hidden;
+    color: #A69E9E;
+}
+
+textarea {
+    background-color: rgba(217, 217, 217, 0.4);
+    border: none;
+    border-radius: 50px;
+    outline: none;
+    vertical-align: middle;
+    padding-left: 15px;
+    appearance: none;
+    overflow: hidden;
+    color: #A69E9E;
+}
+
+#profile {
+    position: absolute;
+    top: 230px;
+    left: 468px;
+}
+
+.personal__data {
+    position: absolute;
+    white-space: nowrap;
+}
+
+.fio {
+    position: absolute;
+    top: 70px;
+}
+
+.fio__input {
+    position: absolute;
+    top: 95px;
+    width: 488px;
+    height: 54px;
+}
+
+.psw {
+    position: absolute;
+    top: 171px;
+}
+
+#password__input {
+    position: absolute;
+    top: 196px;
+    width: 488px;
+    height: 54px;
+}
+
+.password__control {
+    position: absolute;
+    top: 260px;
+	white-space: nowrap;
+}
+
+.email {
+    position: absolute;
+    top: 70px;
+    left: 701px;
+    white-space: nowrap;
+}
+
+.email__input {
+    position: absolute;
+    top: 95px;
+    left: 701px;
+    width: 488px;
+    height: 54px;
+}
+
+.questionnaire {
+    position: absolute;
+    top: 281px;
+}
+
+.field__know {
+    position: absolute;
+    top: 50px;
+    white-space: nowrap;
+}
+
+.field__knowledge {
+    position: absolute;
+    top: 75px;
+    width: 488px;
+    height: 54px;
+    background-color: rgba(217, 217, 217, 0.4);
+    border: none;
+    border-radius: 50px;
+    outline: none;
+    vertical-align: middle;
+    padding-left: 15px;
+    appearance: none;
+    overflow: hidden;
+    color: #A69E9E;
+}
+
+.projects {
+    position: absolute;
+    top: 140px;
+    width: 500px;
+}
+
+.distant__work {
+    position: absolute;
+    top: 327px;
+    width: 500px;
+}
+
+.goals {
+    position: absolute;
+    top: 439px;
+    width: 500px;
+}
+
+.years {
+    position: absolute;
+    top: 50px;
+    left: 701px;
+    width: 500px;
+}
+
+.weaknesses {
+    position: absolute;
+    top: 140px;
+    left: 701px;
+    width: 500px;
+}
+
+.latest_tech {
+    position: absolute;
+    top: 327px;
+    left: 701px;
+    width: 500px;
+}
+
+.additionally {
+    position: absolute;
+    top: 439px;
+    left: 701px;
+    width: 500px;
+}
+
+.projects_input {
+    position: absolute;
+    top: 187px;
+    width: 488px;
+    height: 129px;
+    border-radius: 30px;
+}
+
+.distant__input {
+    position: absolute;
+    top: 374px;
+    width: 488px;
+    height: 54px;
+    border-radius: 50px;
+}
+
+.goals__input {
+    position: absolute;
+    top: 464px;
+    width: 488px;
+    height: 129px;
+    border-radius: 30px;
+}
+
+.years__input {
+    position: absolute;
+    top: 75px;
+    left: 701px;
+    width: 488px;
+    height: 54px;
+    border-radius: 50px;
+}
+
+.weaknesses_input {
+    position: absolute;
+    top: 187px;
+    left: 701px;
+    width: 488px;
+    height: 129px;
+    border-radius: 30px;
+}
+
+.tech_input {
+    position: absolute;
+    top: 374px;
+    left: 701px;
+    width: 488px;
+    height: 54px;
+    border-radius: 50px;
+}
+
+.additionally_input {
+    position: absolute;
+    top: 464px;
+    left: 701px;
+    width: 488px;
+    height: 129px;
+    border-radius: 30px;
+}
+
+.portfolio__quest {
+    position: absolute;
+    top: 905px;
+}
+
+.portfolio__name {
+    position: absolute;
+    top: 50px;
+    white-space: nowrap;
+}
+
+.portfolio__input__name {
+    position: absolute;
+    top: 72px;
+    width: 488px;
+    height: 54px;
+}
+
+.file {
+    position: absolute;
+    top: 148px;
+}
+
+.file__input {
+    display: none;
+    width: 488px;
+    height: 252px;
+    top: 154px;
+}
+
+#file__label{
+    position: absolute;
+    top: 173px;
+    width: 488px;
+    height: 252px;
+    border: 1px dashed #A69E9E;
+}
+
+.label__txt {
+    position: absolute;
+    left: 22px;
+    top: 67px;
+}
+
+.img__file__input {
+    position: absolute;
+    top: 139px;
+    left: 215px;
+}
+
+.portfolio__link{
+    position: absolute;
+    top: 447px;
+    white-space: nowrap;
+}
+
+.portfolio__input__link {
+    position: absolute;
+    top: 472px;
+    width: 488px;
+    height: 54px;
+    border-radius: 50px;
+}
+
+.portfolio__logo {
+    position: absolute;
+    left: 748px;
+    top: 50px;
+    width: 400px;
+    height: 400px;
+}
+
+.edit__portfolio__logo {
+    position: absolute;
+    top: 461px;
+    left: 878px;
+}
+
+.text__edit__logo {
+    position: absolute;
+    top: 461px;
+    left: 898px;
+    white-space: nowrap;
+    color: #A69E9E;
+}
+
+.but__cancel {
+    position: absolute;
+    top: 544px;
+    left: 455px;
+    width: 145px;
+    height: 33px;
+    color: black;
+    background: #fff;
+    border: 1px solid #000000;
+    border-radius: 50px;
+
+}
+
+.but__OK {
+    position: absolute;
+    top: 544px;
+    left: 608px;
+    width: 100px;
+    height: 33px;
+    color: #fff;
+    background: #000000;
+    border-radius: 0px;
+    border: none;
+}
+
+#notifications__main {
+
+}
+
+#settings {
+
+}

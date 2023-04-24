@@ -1,0 +1,28 @@
+.left__links {
+    position: absolute;
+    top: 188px;
+    left: 99px;
+    width: 297px;
+    height: 275px;
+}
+
+.main__teams {
+    position: absolute; 
+    width: 196px;
+    height: 44px;
+}
+
+.teams__list a {
+    position: relative;
+    white-space: nowrap;
+    height: 22px;
+    width: auto;
+    top: 55px;
+    padding-top: 11px;
+}
+
+.all__teams {
+    position: absolute;
+    width: 36px;
+    height: 22px;
+}

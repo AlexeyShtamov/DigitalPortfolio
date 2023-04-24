@@ -1,0 +1,285 @@
+.main {
+    position: absolute;
+    left: 183px;
+    top: 202px;
+    width: 1554px;
+    height: 754px;
+}
+
+.main__right {
+    position: absolute;
+    left: 777px;
+}
+
+.login__bg__image {
+    z-index: 0;
+    border-top-right-radius: 50px 50px;
+    border-bottom-right-radius: 50px 50px;
+}
+
+.blurred__window {
+    z-index: 1;
+    position: absolute;
+    left: 152px;
+    top: 462px;
+    width: 473px;
+    height: 230px;
+
+    background: rgba(255, 254, 254, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 50px;
+}
+
+.blurred__text {
+    position: absolute;
+    top: 23px;
+    left: 26px;
+    height: auto;
+    width: auto;
+    color: #fff;
+}
+
+.blurred__author {
+    position: absolute;
+    top: 185px;
+    left: 290px;
+    height: auto;
+    white-space: nowrap;
+
+    color: #fff;
+}
+
+.registration__button {
+    cursor: pointer;
+
+    background: #000;
+    box-sizing: border-box;
+    border-width: 1px 1px 0px 1px;
+    border-style: solid;
+    border-color: #000;
+    color: #fff;
+}
+
+#specialists__button {
+    position: absolute;
+    top: 66px;
+    left: 91px;
+    height: 59px;
+    width: 297px;
+
+    background: #fff;
+    color: #000;
+    text-decoration: underline;
+}
+
+#specialists__window {
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 594px;
+    height: 567px;
+    left: 91px;
+    top: 125px;
+
+    background: #FFFFFF;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #000000;
+}
+
+.headline {
+    position: absolute;
+    top: 35px;
+    left: 53px;
+    height: 39px;
+    width: 333px;
+}
+
+.subtitle {
+    position: absolute;
+    white-space: nowrap;
+    top: 88px;
+    left: 53px;
+    width: 17px;
+    height: 292px;
+
+    color: #A69E9E;
+}
+
+#teams__button {
+    position: absolute;
+    width: 297px;
+    height: 59px;
+    left: 388px;
+    top: 66px;
+}
+
+.label__email {
+    position: absolute;
+    width: 46px;
+    height: 17px;
+    left: 53px;
+    top: 125px;
+}
+
+.input {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: rgba(217, 217, 217, 0.4);
+    border-radius: 50px;
+    padding-left: 14px;
+    width: 488px;
+    height: 54px;
+}
+
+select {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: rgba(217, 217, 217, 0.4);
+    border-radius: 50px;
+    padding-left: 14px;
+    width: calc(100% - 106px);
+    height: 54px;
+
+    appearance: none;
+    overflow: hidden;
+}
+
+.input__email {
+    position: absolute;
+    top: 146px;
+    left: 53px;
+}
+
+.label__psw {
+    position: absolute;
+    width: 55px;
+    height: 17px;
+    left: 53px;
+    top: 220px;
+}
+
+.input__psw {
+    position: absolute;
+    left: 53px;
+    top: 242px;
+}
+
+.label__profession {
+    position: absolute;
+    width: 84px;
+    height: 17px;
+    left: 53px;
+    top: 316px;
+}
+
+.specialists__select {
+    position: absolute;
+    left: 53px;
+    top: 338px;
+    width: 488px;
+    height: 54px;
+    color: #A69E9E;
+}
+
+.select__choice {
+    position: absolute;
+    width: 441px;
+    color: #000;
+    background-color: #fff;
+}
+
+.bottom__button__register {
+    position: absolute;
+    width: 219px;
+    height: 30px;
+    left: 187px;
+    top: 446px;
+    
+    cursor: pointer;
+    border: none;
+    background-color: #000;
+    text-align: center;
+    border-radius: 50px;
+    color: #fff;
+}
+
+.bottom__button__register:hover {
+    background-color: #fff;
+    color: #000;
+    text-decoration: underline;
+}
+
+.bottom__button__google {
+    cursor: pointer;
+    box-sizing: border-box;
+    position: absolute;
+    width: 219px;
+    height: 30px;
+    left: 187px;
+    top: 491px;
+    background-color: #fff;
+    color: #000;
+    text-align: right;
+    padding-right: 21px;
+    border: 1px solid #A69E9E;
+    border-radius: 50px;
+}
+
+.google__logo {
+    position: absolute;
+    left: 26px;
+    top: 4px;
+}
+
+.bottom__button__google:hover {
+    text-decoration: underline;
+}
+
+.already__registered {
+    position: absolute;
+    left: 157px;
+    top: 536px;
+    width: 279px;
+    height: 17px;
+
+    font-weight: 600;
+    color: #A69E9E;
+}
+
+.sign__in {
+    color: #000;
+    text-decoration: underline;
+}
+
+#teams__window {
+    display: none;
+    box-sizing: border-box;
+    position: absolute;
+    width: 594px;
+    height: 567px;
+    left: 91px;
+    top: 125px;
+
+    background: #FFFFFF;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #000000;
+}
+
+.label__team-name {
+    position: absolute;
+    white-space: nowrap;
+    width: auto;
+    height: 17px;
+    left: 53px;
+    top: 316px;
+}
+
+.input__team-name {
+     position: absolute;
+     top: 338px;
+     left: 53px;
+}
