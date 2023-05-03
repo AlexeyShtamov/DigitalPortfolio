@@ -7,7 +7,7 @@
 }
 
 .main__specialists {
-    position: absolute; 
+    position: absolute;
     width: 196px;
     height: 44px;
 }
@@ -28,9 +28,9 @@
 }
 
 .arrow__controls {
-     position: absolute;
-     left: 758px;
-     top: 1904px;
+    position: absolute;
+    left: 758px;
+    top: 1904px;
 }
 
 #searchResults__links {

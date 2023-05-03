@@ -1,5 +1,6 @@
 .left__links {
-    position: absolute;
+    position: fixed;
+    z-index: 1;
     left: 100px;
     top: 202px;
 }
@@ -112,7 +113,7 @@ textarea {
 .password__control {
     position: absolute;
     top: 260px;
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .email {
@@ -274,7 +275,7 @@ textarea {
     white-space: nowrap;
 }
 
-.portfolio__input__name {
+#portfolio__input__name {
     position: absolute;
     top: 72px;
     width: 488px;
@@ -313,7 +314,7 @@ textarea {
     left: 215px;
 }
 
-.portfolio__link{
+#portfolio__link{
     position: absolute;
     top: 447px;
     white-space: nowrap;
@@ -327,7 +328,7 @@ textarea {
     border-radius: 50px;
 }
 
-.portfolio__logo {
+#portfolio__logo {
     position: absolute;
     left: 748px;
     top: 50px;
