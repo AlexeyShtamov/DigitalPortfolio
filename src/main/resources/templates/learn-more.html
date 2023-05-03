@@ -58,12 +58,14 @@
     </div>
     <div class="footer">
         <div class="txt email__text">Подпишитесь на нашу рассылку, чтобы получать актуальную информацию по Вашим запросам.</div>
-        <div class="email__container">
-            <div class="txt email__headline">Эл. почта:</div>
-            <input class="txt email__example" type="text" placeholder="ivanov.ivan@pochta.ru">
-            <button class="txt" id="confirmation">OK</button>
-            <!--отправлять почту в бд-->
-        </div>
+        <form th:method="POST" th:action="@{/email}" th:object="${email}">
+            <div class="email__container">
+                <div class="txt email__headline">Эл. почта:</div>
+                <input class="txt email__example" type="text" th:field="*{emailName}" placeholder="ivanov.ivan@pochta.ru">
+                <button class="txt" id="confirmation" type="submit">ОК</button>
+                <!--отправлять почту в бд-->
+            </div>
+        </form>
         <div class="footer__bottom">
             <a href="index.html"><img src="/images/footer/logo.png" alt="footer_logo" class="footer__logo"></a>
             <a href="#"><img src="/images/footer/telegram.svg" alt="telegram" class="telegram__logo"></a>
