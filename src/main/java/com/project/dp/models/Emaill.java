@@ -14,10 +14,6 @@ public class Emaill {
     @Column(name = "email")
     private String emailName;
 
-    public Emaill(String emailName) {
-        this.emailName = emailName;
-    }
-
     public Emaill(){
 
     }
@@ -42,6 +38,5 @@ public class Emaill {
     public void setEmailName(String emailName) {
         this.emailName = emailName;
     }
-
 
 }

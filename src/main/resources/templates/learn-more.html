@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,42 +14,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="header">
-        <div class="header__section">
-            <a href="index.html"><img src="/images/header/logo.png" alt="logo" class="header__logo"></a>
-            <a href="specialists.html" class="header__item specialists">Специалистам</a>
-            <a href="teams.html" class="header__item teams">Командам</a>
-            <a href="#" class="header__item search" id="search__js" onclick="openSearch()">Поиск</a>
-            <a href="#" class="header__item feedbacks">Мои отклики</a>
+<div class="header">
+    <div class="header__section">
+        <a th:href="@{/mainpage}"><img src="/images/header/logo.png" alt="logo" class="header__logo"></a>
+        <a th:href="@{/commands}" class="header__item specialists">Специалистам</a>
+        <a th:href="@{/specialists}" class="header__item teams">Командам</a>
+        <a href="#" class="header__item search" id="search__js" onclick="openSearch()">Поиск</a>
+        <a href="#" class="header__item feedbacks">Мои отклики</a>
+    </div>
+    <div class="header__section">
+        <div class="bell"><a th:href="@{/user}"><img src="/images/header/bell.svg" alt="bell"></a></div>
+        <div class="profile__avatar">
+            <!--аватар пользователя получать с бд-->
+            <img src="/images/header/none_avatar.svg" alt="profile" onclick="openProfile()">
         </div>
-        <div class="header__section">
-            <div class="bell"><a href="profile.html"><img src="/images/header/bell.svg" alt="bell"></a></div>
-            <div class="profile__avatar">
-                <!--аватар пользователя получать с бд-->
-                <img src="/images/header/none_avatar.svg" alt="profile" onclick="openProfile()">
-            </div>
-            <div id="login__window">
-                <div class="login__window__box">
-                    <a href="login.html" class="profile__button login__button txt">Войти</a>
-                    <a href="registration.html" class="profile__button register__button txt">Зарегистрироваться</a>
-                </div>
-            </div>
-        </div>
-        <div id="search__box">
-            <input class="search-txt" type="search" placeholder="Введите профессию">
-            <div class="search-bg"><img src="/images/header/search-bg.png" alt="search"></div>
-            <a href="#">
-                <!--при нажатии на bell или "enter" выполняется поиск-->
-                <div class="magnifier-1"><img src="/images/header/magnifier-1.svg" alt="magnifier-1"></div>
-                <div class="magnifier-2"><img src="/images/header/magnifier-2.svg" alt="magnifier-2"></div>
-            </a>
-        </div>
-        <div id="notifications">
-            <div class="notifications__box">
-                <!--получать уведомления с бд-->
+        <div id="login__window">
+            <div class="login__window__box">
+                <a href="login.html" class="profile__button login__button txt">Войти</a>
+                <a href="registration.html" class="profile__button register__button txt">Зарегистрироваться</a>
             </div>
         </div>
     </div>
+    <div id="search__box">
+        <input class="search-txt" type="search" placeholder="Введите профессию">
+        <div class="search-bg"><img src="/images/header/search-bg.png" alt="search"></div>
+        <a href="#">
+            <!--при нажатии на bell или "enter" выполняется поиск-->
+            <div class="magnifier-1"><img src="/images/header/magnifier-1.svg" alt="magnifier-1"></div>
+            <div class="magnifier-2"><img src="/images/header/magnifier-2.svg" alt="magnifier-2"></div>
+        </a>
+    </div>
+    <div id="notifications">
+        <div class="notifications__box">
+            <!--получать уведомления с бд-->
+        </div>
+    </div>
+</div>
     <div class="main">
         <div class="headline">
             <img src="/images/main/learn-more__bg.png" alt="learn-more__bg" class="headline__bg">

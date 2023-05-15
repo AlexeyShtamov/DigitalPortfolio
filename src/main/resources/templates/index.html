@@ -17,8 +17,8 @@
     <div class="header">
         <div class="header__section">
             <a th:href="@{/mainpage}"><img src="/images/header/logo.png" alt="logo" class="header__logo"></a>
-            <a th:href="@{/specialists}" class="header__item specialists">Специалистам</a>
-            <a th:href="@{/commands}" class="header__item teams">Командам</a>
+            <a th:href="@{/commands}" class="header__item specialists">Специалистам</a>
+            <a th:href="@{/specialists}" class="header__item teams">Командам</a>
             <a href="#" class="header__item search" id="search__js" onclick="openSearch()">Поиск</a>
             <a href="#" class="header__item feedbacks">Мои отклики</a>
         </div>
@@ -30,8 +30,8 @@
             </div>
             <div id="login__window">
                 <div class="login__window__box">
-                    <a href="login.html" class="profile__button login__button txt">Войти</a>
-                    <a href="registration.html" class="profile__button register__button txt">Зарегистрироваться</a>
+                    <a th:href="@{/user/login}" class="profile__button login__button txt">Войти</a>
+                    <a th:href="@{/user/registration}" class="profile__button register__button txt">Зарегистрироваться</a>
                 </div>
             </div>
         </div>

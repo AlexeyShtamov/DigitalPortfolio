@@ -29,7 +29,7 @@ public class EmailController {
         emailValidator.validate(emaill, bindingResult);
         if(bindingResult.hasErrors()){
             model.addAttribute("email", new Emaill());
-            return "index";
+            return "redirect:/mainpage";
         }
         emailsService.save(emaill);
         return "redirect:/mainpage";
