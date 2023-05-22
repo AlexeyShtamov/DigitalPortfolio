@@ -29,7 +29,7 @@ public class Questionnaire {
     private String additionalInfo;
     @Column(name = "strongweak")
     private String infoAboutStrongAndWeak;
-    @OneToOne()
+    @OneToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private User user;
 

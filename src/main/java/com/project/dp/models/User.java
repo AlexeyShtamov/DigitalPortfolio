@@ -19,10 +19,10 @@ public class User {
     @Column(name = "password")
     private String password;
     @OneToOne(mappedBy = "user")
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Portfolio portfolio;
     @OneToOne(mappedBy = "user")
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Questionnaire questionnaire;
 
     public User(){

@@ -1,8 +1,13 @@
 package com.project.dp.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Entity
 @Table(name = "Portfolio")
@@ -13,17 +18,18 @@ public class Portfolio {
     private int id;
     @Column(name = "file")
     private File file;
-    @Column(name = "image")
-    private String image;
     @Column(name = "url")
     private String url;
-    @Column(name = "portfolioname")
+    @Column(name = "portfolio_name")
     private String portfolioName;
-    @OneToOne()
+    @OneToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private User user;
+    @OneToOne(mappedBy = "portfolio")
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    private PortfolioImage image;
 
-    public Portfolio(int id, File file, String image, String url, String portfolioName, User user) {
+    public Portfolio(int id, File file, PortfolioImage image, String url, String portfolioName, User user) {
         this.id = id;
         this.file = file;
         this.image = image;
@@ -31,8 +37,17 @@ public class Portfolio {
         this.portfolioName = portfolioName;
         this.user = user;
     }
-    public Portfolio(){
-        this.image = "images/main/" + "portfolio__logo.jpg"; //пока реализация такая
+       public Portfolio(){
+           //this.image = "images/main/" + "portfolio__logo.jpg"; //пока реализация такая
+        }
+
+    public void crateLogo(){
+        Path path = Paths.get("logo/" + image);
+        try{
+            Files.createFile(path);
+        }catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public File getFile() {
@@ -43,11 +58,11 @@ public class Portfolio {
         this.file = file;
     }
 
-    public String getImage() {
+    public PortfolioImage getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(PortfolioImage image) {
         this.image = image;
     }
 
