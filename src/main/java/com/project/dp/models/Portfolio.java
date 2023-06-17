@@ -1,13 +1,6 @@
 package com.project.dp.models;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Cascade;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @Entity
 @Table(name = "Portfolio")
@@ -16,20 +9,23 @@ public class Portfolio {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "file")
-    private File file;
+    @Column(name = "file", columnDefinition = "BLOB")
+    private byte[] file;
     @Column(name = "url")
     private String url;
     @Column(name = "portfolio_name")
     private String portfolioName;
     @OneToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
-    private User user;
-    @OneToOne(mappedBy = "portfolio")
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    private PortfolioImage image;
+    private Person user;
 
-    public Portfolio(int id, File file, PortfolioImage image, String url, String portfolioName, User user) {
+//    @OneToOne(mappedBy = "portfolio")
+//    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+//    private PortfolioImage image;
+    @Column(name = "image", columnDefinition = "BLOB")
+    public byte[] image;
+
+    public Portfolio(int id, byte[] file, byte[] image, String url, String portfolioName, Person user) {
         this.id = id;
         this.file = file;
         this.image = image;
@@ -38,31 +34,22 @@ public class Portfolio {
         this.user = user;
     }
        public Portfolio(){
-           //this.image = "images/main/" + "portfolio__logo.jpg"; //пока реализация такая
+
         }
 
-    public void crateLogo(){
-        Path path = Paths.get("logo/" + image);
-        try{
-            Files.createFile(path);
-        }catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public File getFile() {
+    public byte[] getFile() {
         return file;
     }
 
-    public void setFile(File file) {
+    public void setFile(byte[] file) {
         this.file = file;
     }
 
-    public PortfolioImage getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(PortfolioImage image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
@@ -82,11 +69,11 @@ public class Portfolio {
         this.portfolioName = name;
     }
 
-    public User getUser() {
+    public Person getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Person user) {
         this.user = user;
     }
 
@@ -97,4 +84,5 @@ public class Portfolio {
     public void setId(int id) {
         this.id = id;
     }
+
 }

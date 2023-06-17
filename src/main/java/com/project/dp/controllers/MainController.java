@@ -24,10 +24,7 @@ public class MainController {
 
     @GetMapping()
     public String index(Model model){
-        //List<Portfolio> portfolioList = portfoliosService.getPortfolios();
-
         model.addAttribute("email", new Emaill());
-        //model.addAttribute("portfolios", portfolioList);
         return "index";
     }
 

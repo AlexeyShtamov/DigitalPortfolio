@@ -6,13 +6,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
-@RequestMapping("/specialists")
-public class SpecialistController {
+@RequestMapping("/teams")
+public class TeamController {
     @GetMapping()
     public String index(Model model){
         model.addAttribute("email", new Emaill());
-        model.addAttribute("rightPage", "specialists");
-        return "teams";
+        model.addAttribute("rightPage", "commands");
+        return "specialists";
     }
-
+    @GetMapping("/red")
+    public String show(){
+        return "profile-teams";
+    }
 }

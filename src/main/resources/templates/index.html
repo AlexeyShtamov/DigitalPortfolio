@@ -17,7 +17,7 @@
     <div class="header">
         <div class="header__section">
             <a th:href="@{/mainpage}"><img src="/images/header/logo.png" alt="logo" class="header__logo"></a>
-            <a th:href="@{/commands}" class="header__item specialists">Специалистам</a>
+            <a th:href="@{/teams}" class="header__item specialists">Специалистам</a>
             <a th:href="@{/specialists}" class="header__item teams">Командам</a>
             <a href="#" class="header__item search" id="search__js" onclick="openSearch()">Поиск</a>
             <a href="#" class="header__item feedbacks">Мои отклики</a>
@@ -71,11 +71,50 @@
             </ul>
         </div>
         <div class="portfolio__container">
-            <div class="txt3 portfolio__section">Портфолио</div>
+            <div class="txt3 portfolio__section">Портфолио
+                <!--наполнение div с классами portfolio-one и portfolio-two заменить на любые данные из бд-->
+                <div class="portfolio-one">
+                    <img src="/images/main/index__cover.jpg" alt="logo1" class="cover__index img-one"><!--переводить на портфолио-->
+                    <span class="txt12 first__line">Имя Фамилия</span><!--переводить на профиль пользователя-->
+                    <span class="txt12 second__line">Название портфолио</span><!--переводить на портфолио-->
+                </div>
+                <div class="portfolio-two"><!--ссылки работают так же, как и в portfolio-one-->
+                    <img src="/images/main/index__cover.jpg" alt="logo1" class="cover__index img-two">
+                    <span class="txt12 first__line">Имя Фамилия</span>
+                    <span class="txt12 second__line">Название портфолио</span>
+                </div>
+                <div class="see__all">
+                    <img src="/images/main/see__all.jpg" alt="see__all" class="img__s-a">
+                    <a th:href="@{/specialists}" class="a__see-all txt12">
+                        ПОСМОТРЕТЬ ВСЕ
+                        <img src="/images/main/bg-circle.svg" alt="bg-circle" class="bg-circle">
+                        <img src="/images/main/bg-arrow.svg" alt="bg-arrow" class="bg-arrow">
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="teams__container">
-            <div class="txt3 teams__section">Команды</div>
-                <!--получать список команд с бд-->
+            <div class="txt3 teams__section">Команды
+                <!--наполнение div с классами team-one и team-two заменить на любые данные из бд-->
+                <div class="team-one">
+                    <img src="/images/main/teams-cover.jpg" alt="team1" class="cover__index img-one">
+                    <span class="txt12 first__line">Java Специалист в команду</span><!--переводить на страничку команды-->
+                    <span class="txt12 second__line">5/6</span>
+                </div>
+                <div class="team-two">
+                    <img src="/images/main/teams-cover.jpg" alt="team1" class="cover__index img-two">
+                    <span class="txt12 first__line">Нужен веб-дизайнер в команду “Темный Лес”</span><!--переводить на страничку команды-->
+                    <span class="txt12 second__line">5/6</span>
+                </div>
+                <div class="see__all">
+                    <img src="/images/main/see__all.jpg" alt="see__all" class="img__s-a">
+                    <a th:href="@{/teams}" class="a__see-all txt12">
+                        ПОСМОТРЕТЬ ВСЕ
+                        <img src="/images/main/bg-circle.svg" alt="bg-circle" class="bg-circle">
+                        <img src="/images/main/bg-arrow.svg" alt="bg-arrow" class="bg-arrow">
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
     <div class="footer">

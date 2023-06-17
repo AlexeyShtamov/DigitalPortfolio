@@ -26,3 +26,11 @@ function openProfile() {
         x.style.display = 'none';
     }
 }
+
+function goToPagePortfolio() {
+    window.location.href = "portfolio-view.html";
+}
+
+function goToPageTeam() {
+    window.location.href = "add-view.html";
+}

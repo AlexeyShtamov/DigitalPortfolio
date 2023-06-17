@@ -1,0 +1,293 @@
+#window__avatar__input {
+    display: none;
+    z-index: 2;
+    position: fixed;
+    top: 150px;
+    left: 700px;
+    height: 600px;
+    width: 600px;
+    box-shadow: 0 0 10px #000;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+#window__cover__input {
+    display: none;
+    z-index: 2;
+    position: fixed;
+    top: 150px;
+    left: 700px;
+    height: 600px;
+    width: 600px;
+    box-shadow: 0 0 10px #000;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+#file__label1 {
+    position: absolute;
+    left: 130px;
+}
+
+.left__links {
+    position: fixed;
+    z-index: 1;
+    left: 100px;
+    top: 202px;
+}
+
+.profile__avatar__main {
+    position: absolute;
+    left: 33px;
+    height: 309px;
+    width: 309px;
+    border-radius: 50%;
+}
+
+.team__name {
+    position: absolute;
+    top: 364px;
+    width: auto;
+    white-space: nowrap;
+}
+
+.edit__avatar {
+    position: absolute;
+    top: 320px;
+    left: 88px;
+}
+
+.text__edit {
+    position: absolute;
+    left: 108px;
+    top: 324px;
+    white-space: nowrap;
+    line-height: 15px;
+    color: #A69E9E;
+}
+
+.profile__links {
+    margin-top: 25px;
+    position: absolute;
+    top: 433px;
+}
+
+.profile__buttons {
+    border: none;
+    background-color: #fff;
+    margin-bottom: 25px;
+}
+
+.profile__buttons:hover{
+    font-weight: 600;
+}
+
+input {
+    background-color: rgba(217, 217, 217, 0.4);
+    border: none;
+    border-radius: 50px;
+    outline: none;
+    vertical-align: middle;
+    padding-left: 15px;
+    appearance: none;
+    overflow: hidden;
+    color: #A69E9E;
+}
+
+.file__input {
+    display: none;
+    width: 488px;
+    height: 252px;
+    top: 154px;
+}
+
+#file__label{
+    position: absolute;
+    top: 173px;
+    width: 488px;
+    height: 252px;
+    border: 1px dashed #A69E9E;
+}
+
+.img__file__input1 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 60px;
+    top: 200px;
+}
+
+.close {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.personal__data {
+    position: absolute;
+    white-space: nowrap;
+    top: 230px;
+    left: 470px;
+}
+
+.pd__h1 {
+    position: absolute;
+    white-space: nowrap;
+}
+
+.fio {
+    position: absolute;
+    margin-top: 70px;
+}
+
+.fio__input {
+    position: absolute;
+    margin-top: 95px;
+    width: 488px;
+    height: 54px;
+}
+
+.psw {
+    position: absolute;
+    margin-top: 171px;
+}
+
+#password__input {
+    position: absolute;
+    margin-top: 196px;
+    width: 488px;
+    height: 54px;
+}
+
+.password__control {
+    position: absolute;
+    margin-top: 260px;
+    white-space: nowrap;
+}
+
+.email {
+    position: absolute;
+    margin-top: 70px;
+    margin-left: 700px;
+    white-space: nowrap;
+}
+
+.email__input {
+    position: absolute;
+    margin-top: 95px;
+    margin-left: 700px;
+    width: 488px;
+    height: 54px;
+}
+
+.but__cancel {
+    width: 145px;
+    height: 33px;
+    color: black;
+    background: #fff;
+    border: 1px solid #000000;
+    border-radius: 50px;
+
+}
+
+.but__OK {
+    width: 100px;
+    height: 33px;
+    color: #fff;
+    background: #000000;
+    border-radius: 0px;
+    border: none;
+}
+
+.buttons__pd {
+    position: absolute;
+    margin-top: 300px;
+    margin-left: 450px;
+    white-space: nowrap;
+}
+
+.ad {
+    position: absolute;
+    margin-top: 600px;
+    margin-left: 470px;
+}
+
+.add__ad {
+    position: absolute;
+    white-space: nowrap;
+}
+
+.add__title {
+    position: absolute;
+    margin-top: 70px;
+    white-space: nowrap;
+}
+
+.add__input {
+    position: absolute;
+    margin-top: 110px;
+    width: 488px;
+    height: 54px;
+}
+
+.people__count {
+    position: absolute;
+    margin-top: 200px;
+    white-space: nowrap;
+}
+
+.people__input {
+    position: absolute;
+    margin-top: 230px;
+    width: 488px;
+    height: 54px;
+}
+
+.add_description {
+    position: absolute;
+    margin-top: 320px;
+    white-space: nowrap;
+}
+
+.description__input {
+    position: absolute;
+    margin-top: 350px;
+    width: 488px;
+    height: 140px;
+}
+
+.change__cover {
+    position: absolute;
+    margin-top: 70px;
+    margin-left: 745px;
+    white-space: nowrap;
+}
+
+.edit__team-cover {
+    position: absolute;
+    margin-top: 95px;
+    width: 400px;
+    height: 400px;
+    margin-left: 700px;
+}
+
+.text__edit__cover {
+    position: absolute;
+    white-space: nowrap;
+    color: #A69E9E;
+}
+
+.edit__cover {
+    position: absolute;
+    margin-top: 500px;
+    margin-left: 790px;
+    cursor: pointer;
+}
+
+.buttons__cover {
+    position: absolute;
+    margin-top: 570px;
+    margin-left: 450px;
+    white-space: nowrap;
+}

@@ -7,7 +7,7 @@
 }
 
 .main__specialists {
-    position: absolute; 
+    position: absolute;
     width: 196px;
     height: 44px;
 }
@@ -28,20 +28,96 @@
 }
 
 .arrow__controls {
-     position: absolute;
-     left: 758px;
-     top: 1904px;
+    position: absolute;
+    left: 758px;
+    top: 1904px;
 }
 
 #searchResults__links {
     position: absolute;
     left: 72px;
+    white-space: nowrap;
 }
 
-.paging__pagelink {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
+.btn__next {
+    position: absolute;
+    left: 355px;
+}
+
+#searchResults__links span {
+    display: inline-block;
+    margin-right: 40px;
+    margin-top: 10px;
+}
+
+.portfolio__list {
+    position: absolute;
+    left: 505px;
+}
+
+.portfolio__one {
+    position: absolute;
+    top: 110px;
+    padding-top: 92px;
+}
+
+.portfolio__two {
+    position: absolute;
+    top: 452px;
+    padding-top: 92px;
+}
+
+.portfolio__three {
+    position: absolute;
+    top: 794px;
+    padding-top: 92px;
+}
+
+.portfolio__four {
+    position: absolute;
+    top: 1136px;
+    padding-top: 92px;
+}
+
+.portfolio__five {
+    position: absolute;
+    top: 1478px;
+    padding-top: 92px;
+}
+
+.portfolio__logo {
+    position: absolute;
+    width: 350px;
+    height: 250px;
+}
+
+.portfolio__name {
+    position: absolute;
+    width: 520px;
+    left: 377px;
+}
+
+.portfolio__description {
+    position: absolute;
+    top: 145px;
+    left: 377px;
+    width: 520px;
+}
+
+.portfolio__time {
+    position: absolute;
+    top: 330px;
+    left: 377px;
+    width: 520px;
+}
+
+.respond__btn {
+    position: absolute;
+    left: 975px;
+    top: 190px;
+    color: #FFFFFF;
+    background-color: black;
+    border-radius: 50px;
+    border: none;
+    padding: 10px 14px 10px 14px;
 }

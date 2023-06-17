@@ -1,6 +1,9 @@
 package com.project.dp.models;
 
 import jakarta.persistence.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Entity
 @Table(name = "Portfolioimage")
@@ -90,5 +93,15 @@ public class PortfolioImage {
 
     public void setPortfolio(Portfolio portfolio) {
         this.portfolio = portfolio;
+    }
+
+    public static PortfolioImage toImageEntity(MultipartFile file) throws IOException {
+        PortfolioImage image = new PortfolioImage();
+        image.setName(file.getName());
+        image.setOriginalFileName(file.getOriginalFilename());
+        image.setContentType(file.getContentType());
+        image.setSize(file.getSize());
+        image.setBytes(file.getBytes());
+        return image;
     }
 }

@@ -1,3 +1,50 @@
+#window__avatar__input {
+    display: none;
+    z-index: 2;
+    position: fixed;
+    top: 150px;
+    left: 700px;
+    height: 600px;
+    width: 600px;
+    box-shadow: 0 0 10px #000;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+
+#window__cover__input {
+    display: none;
+    z-index: 2;
+    position: fixed;
+    top: 150px;
+    left: 700px;
+    height: 600px;
+    width: 600px;
+    box-shadow: 0 0 10px #000;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+#file__label1 {
+    position: absolute;
+    left: 130px;
+}
+
+.img__file__input1 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 60px;
+    top: 200px;
+}
+
+.close {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    cursor: pointer;
+}
+
 .left__links {
     position: fixed;
     z-index: 1;
@@ -79,6 +126,7 @@ textarea {
     position: absolute;
     top: 230px;
     left: 468px;
+    z-index: 1;
 }
 
 .personal__data {
@@ -113,7 +161,7 @@ textarea {
 .password__control {
     position: absolute;
     top: 260px;
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .email {
@@ -133,7 +181,7 @@ textarea {
 
 .questionnaire {
     position: absolute;
-    top: 281px;
+    top: 350px;
 }
 
 .field__know {
@@ -266,7 +314,7 @@ textarea {
 
 .portfolio__quest {
     position: absolute;
-    top: 905px;
+    top: 1024px;
 }
 
 .portfolio__name {
@@ -350,10 +398,11 @@ textarea {
     color: #A69E9E;
 }
 
+.edit__cover {
+    cursor: pointer;
+}
+
 .but__cancel {
-    position: absolute;
-    top: 544px;
-    left: 455px;
     width: 145px;
     height: 33px;
     color: black;
@@ -364,9 +413,6 @@ textarea {
 }
 
 .but__OK {
-    position: absolute;
-    top: 544px;
-    left: 608px;
     width: 100px;
     height: 33px;
     color: #fff;
@@ -375,10 +421,23 @@ textarea {
     border: none;
 }
 
-#notifications__main {
-
+.buttons__pd {
+    position: absolute;
+    top: 300px;
+    left: 450px;
+    white-space: nowrap;
 }
 
-#settings {
+.buttons__quest {
+    position: absolute;
+    top: 630px;
+    left: 450px;
+    white-space: nowrap;
+}
 
+.buttons__pq {
+    position: absolute;
+    top: 550px;
+    left: 450px;
+    white-space: nowrap;
 }

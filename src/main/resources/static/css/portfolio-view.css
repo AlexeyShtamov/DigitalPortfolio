@@ -1,0 +1,78 @@
+.main {
+    position: absolute;
+}
+
+.portfolio__main {
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 100px;
+}
+
+.portfolio__cover {
+    position: absolute;
+    width: 540px;
+    height: 400px;
+    image-rendering: optimizeQuality;
+}
+
+.portfolio__name {
+    position: absolute;
+    margin-top: 0px;
+    margin-left: 550px;
+    white-space: nowrap;
+}
+
+.portfolio__description {
+    position: absolute;
+    width: 700px;
+    height: 600px;
+    margin-top: 50px;
+    margin-left: 550px;
+}
+
+.user__info {
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 1500px;
+    white-space: nowrap;
+}
+
+.user__logo {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+}
+
+.user__name {
+    position: absolute;
+    margin-top: 330px;
+    text-decoration: none;
+    color: black;
+}
+
+.user__email {
+    position: absolute;
+    margin-top: 390px;
+    margin-left: 70px;
+}
+
+.user__email_a {
+    position: absolute;
+    margin-top: 420px;
+    margin-left: 70px;
+    text-decoration: none;
+    color:black;
+    text-decoration: underline;
+}
+
+.user__invite {
+    position: absolute;
+    margin-top: 460px;
+    margin-left: 85px;
+    padding: 10px;
+    background-color: black;
+    color: #FFF;
+    border: none;
+    border-radius: 50px;
+}

@@ -19,7 +19,7 @@
 <div class="header">
     <div class="header__section">
         <a th:href="@{/mainpage}"><img src="/images/header/logo.png" alt="logo" class="header__logo"></a>
-        <a th:href="@{/commands}" class="header__item specialists">Специалистам</a>
+        <a th:href="@{/teams}" class="header__item specialists">Специалистам</a>
         <a th:href="@{/specialists}" class="header__item teams">Командам</a>
         <a href="#" class="header__item search" id="search__js" onclick="openSearch()">Поиск</a>
         <a href="#" class="header__item feedbacks">Мои отклики</a>
@@ -69,13 +69,13 @@
         <div id="specialists__window">
             <h1 class="headline txt5">Добро пожаловать!</h1>
             <p class="subtitle txt6">Добро пожаловать! Введите эл. почту и пароль.</p>
-            <form action="#" id="login__specialist">
+            <form action="/process_login" method="post" name="f" id="login__specialist">
                 <label for="email" class="txt6 label__email">Email</label>
-                <input type="text" name="email__specialist" placeholder="ivanov.ivan@pochta.ru" class="txt input input__email" required>
-                <label for="psw" class="txt6 label__psw">Пароль</label>
-                <input type="text" name="psw__specialist" placeholder="Введите пароль..." class="txt input input__psw"required>
+                <input id="email" type="text" name="username" placeholder="ivanov.ivan@pochta.ru" class="txt input input__email" required>
+                <label for="password" class="txt6 label__psw">Пароль</label>
+                <input id="password" type="text" name="password" placeholder="Введите пароль..." class="txt input input__psw"required>
 
-                <button class="txt4 bottom__button__login">Войти</button>
+                <button type="submit" class="txt4 bottom__button__login">Войти</button>
                 <button class="bottom__button__google txt4">
                     <img src="/images/main/google__logo.svg" alt="google__logo" class="google__logo">
                     Войти с Google
@@ -90,7 +90,7 @@
                 <!--сделать ссылку на забыли пароль-->
             </form>
             <div class="txt6 not__registered">
-                Вы не зарегистрированы? <a href="registration.html" class="register__end">Зарегистрируйтесь бесплатно!</a>
+                Вы не зарегистрированы? <a th:href="@{/auth/registration}" class="register__end">Зарегистрируйтесь бесплатно!</a>
             </div>
         </div>
     </div>
@@ -102,8 +102,8 @@
             <form action="#">
                 <label for="email" class="txt6 label__team-name">Название команды</label>
                 <input type="text" name="team__name" placeholder="DigitalPortfolio123" class="txt input input__team-name" required>
-                <label for="psw" class="txt6 label__psw">Пароль</label>
-                <input type="text" name="psw" placeholder="Введите пароль..." class="txt input input__psw" required>
+                <label for="team__password" class="txt6 label__psw">Пароль</label>
+                <input type="text" id="team__password" name="password" placeholder="Введите пароль..." class="txt input input__psw" required>
 
                 <button class="txt4 bottom__button__login">Войти</button>
                 <button class="bottom__button__google txt4">
@@ -120,17 +120,17 @@
                 <!--сделать ссылку на забыли пароль-->
             </form>
             <div class="txt6 not__registered">
-                Вы не зарегистрированы? <a href="registration.html" class="register__end">Зарегистрируйтесь бесплатно!</a>
+                Вы не зарегистрированы? <a th:href="@{/auth/registration}" class="register__end">Зарегистрируйтесь бесплатно!</a>
             </div>
         </div>
     </div>
 </div>
 <div class="footer" style="top: 1057px">
     <div class="txt email__text">Подпишитесь на нашу рассылку, чтобы получать актуальную информацию по Вашим запросам.</div>
-    <form th:method="POST" th:action="@{/email}" th:object="${email}">
+    <form action="#" >
         <div class="email__container">
             <div class="txt email__headline">Эл. почта:</div>
-            <input class="txt email__example" type="text" th:field="*{emailName}" placeholder="ivanov.ivan@pochta.ru">
+            <input class="txt email__example" type="text" placeholder="ivanov.ivan@pochta.ru">
             <button class="txt" id="confirmation" type="submit">ОК</button>
             <!--отправлять почту в бд-->
         </div>

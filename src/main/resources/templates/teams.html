@@ -17,7 +17,7 @@
 <div class="header">
     <div class="header__section">
         <a th:href="@{/mainpage}"><img src="/images/header/logo.png" alt="logo" class="header__logo"></a>
-        <a th:href="@{/commands}" class="header__item specialists">Специалистам</a>
+        <a th:href="@{/teams}" class="header__item specialists">Специалистам</a>
         <a th:href="@{/specialists}" class="header__item teams">Командам</a>
         <a href="#" class="header__item search" id="search__js" onclick="openSearch()">Поиск</a>
         <a href="#" class="header__item feedbacks">Мои отклики</a>
@@ -63,7 +63,57 @@
                 <li class="tag__all all__teams"><a class="tag__all" href="#">Все</a></li>
             </ul>
         </div>
+        <div class="team__list">
+            <ul class="team__ul">
+                <li onclick="goToPageTeam()" class="team__one"> <!--Всё будет меняться на данные из бд-->
+                    <img src="/images/main/team__logo-teams.jpg" alt="team__logo" class="team__logo">
+                    <a href="#" class="team__name txt13">Название команды</a>
+                    <span class="team__description txt">Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды</span>
+                    <span class="team__time txt6">0 часов 0 минут</span>
+                    <button class="respond__btn txt">Откликнуться</button>
+                </li>
+                <li onclick="goToPageTeam()" class="team__two"> <!--Всё будет меняться на данные из бд-->
+                    <img src="/images/main/team__logo-teams.jpg" alt="team__logo" class="team__logo">
+                    <a href="#" class="team__name txt13">Название команды</a>
+                    <span class="team__description txt">Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды</span>
+                    <span class="team__time txt6">0 часов 0 минут</span>
+                    <button class="respond__btn txt">Откликнуться</button>
+                </li>
+                <li onclick="goToPageTeam()" class="team__three"> <!--Всё будет меняться на данные из бд-->
+                    <img src="/images/main/team__logo-teams.jpg" alt="team__logo" class="team__logo">
+                    <a href="#" class="team__name txt13">Название команды</a>
+                    <span class="team__description txt">Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды</span>
+                    <span class="team__time txt6">0 часов 0 минут</span>
+                    <button class="respond__btn txt">Откликнуться</button>
+                </li>
+                <li onclick="goToPageTeam()" class="team__four"> <!--Всё будет меняться на данные из бд-->
+                    <img src="/images/main/team__logo-teams.jpg" alt="team__logo" class="team__logo">
+                    <a href="#" class="team__name txt13">Название команды</a>
+                    <span class="team__description txt">Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды</span>
+                    <span class="team__time txt6">0 часов 0 минут</span>
+                    <button class="respond__btn txt">Откликнуться</button>
+                </li>
+                <li onclick="goToPageTeam()" class="team__five"> <!--Всё будет меняться на данные из бд-->
+                    <img src="/images/main/team__logo-teams.jpg" alt="team__logo" class="team__logo">
+                    <a href="#" class="team__name txt13">Название команды</a>
+                    <span class="team__description txt">Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды Описание команды</span>
+                    <span class="team__time txt6">0 часов 0 минут</span>
+                    <button class="respond__btn txt">Откликнуться</button>
+                </li>
+            </ul>
+        </div>
     </div>
+<div class="arrow__controls">
+    <img src="/images/main/ctrl_black.svg" alt="btn__prev" class="btn__prev">
+    <span id="searchResults__links">
+            <span class="txt">1</span>
+            <span class="txt">2</span>
+            <span class="txt">3</span>
+            <span class="txt">...</span>
+            <span class="txt">86</span>
+        </span>
+    <img src="/images/main/ctrl_black.svg" style="transform: rotate(180deg);" alt="btn__next" class="btn__next">
+</div>
     <div class="footer">
         <div class="txt email__text">Подпишитесь на нашу рассылку, чтобы получать актуальную информацию по Вашим запросам.</div>
         <form th:method="POST" th:action="@{/email}" th:object="${email}">
