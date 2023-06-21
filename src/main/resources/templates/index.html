@@ -14,42 +14,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="header">
-        <div class="header__section">
-            <a th:href="@{/mainpage}"><img src="/images/header/logo.png" alt="logo" class="header__logo"></a>
-            <a th:href="@{/teams}" class="header__item specialists">Специалистам</a>
-            <a th:href="@{/specialists}" class="header__item teams">Командам</a>
-            <a href="#" class="header__item search" id="search__js" onclick="openSearch()">Поиск</a>
-            <a href="#" class="header__item feedbacks">Мои отклики</a>
+<div class="header">
+    <div class="header__section">
+        <a th:href="@{/mainpage}"><img src="/images/header/logo.png" alt="logo" class="header__logo"></a>
+        <a th:href="@{/1/allTeams}" class="header__item specialists">Специалистам</a>
+        <a th:href="@{/0/allUsers}" class="header__item teams">Командам</a>
+        <a href="#" class="header__item search" id="search__js" onclick="openSearch()">Поиск</a>
+        <a href="#" class="header__item feedbacks">Мои отклики</a>
+    </div>
+    <div class="header__section">
+        <div class="bell"><a th:href="@{/{team}(team=${person.getTeam()})}"><img src="/images/header/bell.svg" alt="bell"></a></div>
+        <div class="profile__avatar">
+            <!--аватар пользователя получать с бд-->
+            <img src="/images/header/none_avatar.svg" alt="profile" onclick="openProfile()">
         </div>
-        <div class="header__section">
-            <div class="bell"><a th:href="@{/user}"><img src="/images/header/bell.svg" alt="bell"></a></div>
-            <div class="profile__avatar">
-                <!--аватар пользователя получать с бд-->
-                <img src="/images/header/none_avatar.svg" alt="profile" onclick="openProfile()">
-            </div>
-            <div id="login__window">
-                <div class="login__window__box">
-                    <a th:href="@{/user/login}" class="profile__button login__button txt">Войти</a>
-                    <a th:href="@{/user/registration}" class="profile__button register__button txt">Зарегистрироваться</a>
-                </div>
-            </div>
-        </div>
-        <div id="search__box">
-            <input class="search-txt" type="search" placeholder="Введите профессию">
-            <div class="search-bg"><img src="/images/header/search-bg.png" alt="search"></div>
-            <a href="#">
-                <!--при нажатии на bell или "enter" выполняется поиск-->
-                <div class="magnifier-1"><img src="/images/header/magnifier-1.svg" alt="magnifier-1"></div>
-                <div class="magnifier-2"><img src="/images/header/magnifier-2.svg" alt="magnifier-2"></div>
-            </a>
-        </div>
-        <div id="notifications">
-            <div class="notifications__box">
-                <!--получать уведомления с бд-->
+        <div id="login__window">
+            <div class="login__window__box">
+                <a th:href="@{/auth/login}" class="profile__button login__button txt">Войти</a>
+                <a th:href="@{/auth/registration}" class="profile__button register__button txt">Зарегистрироваться</a>
             </div>
         </div>
     </div>
+    <div id="search__box">
+        <input class="search-txt" type="search" placeholder="Введите профессию">
+        <div class="search-bg"><img src="/images/header/search-bg.png" alt="search"></div>
+        <a href="#">
+            <!--при нажатии на bell или "enter" выполняется поиск-->
+            <div class="magnifier-1"><img src="/images/header/magnifier-1.svg" alt="magnifier-1"></div>
+            <div class="magnifier-2"><img src="/images/header/magnifier-2.svg" alt="magnifier-2"></div>
+        </a>
+    </div>
+    <div id="notifications">
+        <div class="notifications__box">
+            <!--получать уведомления с бд-->
+        </div>
+    </div>
+</div>
     <div class="main">
         <div class="main__information">
             <img src="/images/main/Rectangle%201.jpg" alt="right-image" class="main__image">
@@ -64,10 +64,10 @@
                 <li class="main__specialists">Специалисты</li>
             </ul>
             <ul class="values txt2">
-                <li class="count__portfolio">960</li>
-                <li class="count__exp">17</li>
-                <li class="count__teams">1253</li>
-                <li class="count__specialists">4382</li>
+                <li th:text="${portfolios.size()}" class="count__portfolio">960</li>
+                <li class="count__exp">1</li>
+                <li th:text="${people.size()}" class="count__teams">8</li>
+                <li th:text="${teams.size()}" class="count__specialists">4382</li>
             </ul>
         </div>
         <div class="portfolio__container">
@@ -75,17 +75,17 @@
                 <!--наполнение div с классами portfolio-one и portfolio-two заменить на любые данные из бд-->
                 <div class="portfolio-one">
                     <img src="/images/main/index__cover.jpg" alt="logo1" class="cover__index img-one"><!--переводить на портфолио-->
-                    <span class="txt12 first__line">Имя Фамилия</span><!--переводить на профиль пользователя-->
-                    <span class="txt12 second__line">Название портфолио</span><!--переводить на портфолио-->
+                    <span th:text="${portfolios.get(0).getPerson().getSplitName().get(0) + ' ' + portfolios.get(0).getPerson().getSplitName().get(1)}" class="txt12 first__line">Имя Фамилия</span><!--переводить на профиль пользователя-->
+                    <span th:text="${portfolios.get(0).portfolioName}" class="txt12 second__line">Название портфолио</span><!--переводить на портфолио-->
                 </div>
                 <div class="portfolio-two"><!--ссылки работают так же, как и в portfolio-one-->
                     <img src="/images/main/index__cover.jpg" alt="logo1" class="cover__index img-two">
-                    <span class="txt12 first__line">Имя Фамилия</span>
-                    <span class="txt12 second__line">Название портфолио</span>
+                    <span th:text="${portfolios.get(1).getPerson().getSplitName().get(0) + ' ' + portfolios.get(1).getPerson().getSplitName().get(1)}" class="txt12 first__line">Имя Фамилия</span><!--переводить на профиль пользователя-->
+                    <span th:text="${portfolios.get(1).portfolioName}" class="txt12 second__line">Название портфолио</span><!--переводить на портфолио-->
                 </div>
                 <div class="see__all">
                     <img src="/images/main/see__all.jpg" alt="see__all" class="img__s-a">
-                    <a th:href="@{/specialists}" class="a__see-all txt12">
+                    <a th:href="@{/portfolio/all}" class="a__see-all txt12">
                         ПОСМОТРЕТЬ ВСЕ
                         <img src="/images/main/bg-circle.svg" alt="bg-circle" class="bg-circle">
                         <img src="/images/main/bg-arrow.svg" alt="bg-arrow" class="bg-arrow">
@@ -98,17 +98,17 @@
                 <!--наполнение div с классами team-one и team-two заменить на любые данные из бд-->
                 <div class="team-one">
                     <img src="/images/main/teams-cover.jpg" alt="team1" class="cover__index img-one">
-                    <span class="txt12 first__line">Java Специалист в команду</span><!--переводить на страничку команды-->
-                    <span class="txt12 second__line">5/6</span>
+                    <span th:text="${teams.get(1).getTeamInfo().name}" class="txt12 first__line">Java Специалист в команду</span><!--переводить на страничку команды-->
+                    <span th:text="${teams.get(1).getTeamInfo().countOfPerson + '/6'}"class="txt12 second__line">5/6</span>
                 </div>
                 <div class="team-two">
                     <img src="/images/main/teams-cover.jpg" alt="team1" class="cover__index img-two">
-                    <span class="txt12 first__line">Нужен веб-дизайнер в команду “Темный Лес”</span><!--переводить на страничку команды-->
-                    <span class="txt12 second__line">5/6</span>
+                    <span th:text="${teams.get(2).getTeamInfo().name}" class="txt12 first__line">Нужен веб-дизайнер в команду “Темный Лес”</span><!--переводить на страничку команды-->
+                    <span th:text="${teams.get(2).getTeamInfo().countOfPerson + '/6'}" class="txt12 second__line">5/6</span>
                 </div>
                 <div class="see__all">
                     <img src="/images/main/see__all.jpg" alt="see__all" class="img__s-a">
-                    <a th:href="@{/teams}" class="a__see-all txt12">
+                    <a th:href="@{/1/allTeams}" class="a__see-all txt12">
                         ПОСМОТРЕТЬ ВСЕ
                         <img src="/images/main/bg-circle.svg" alt="bg-circle" class="bg-circle">
                         <img src="/images/main/bg-arrow.svg" alt="bg-arrow" class="bg-arrow">
@@ -128,7 +128,7 @@
             </div>
         </form>
         <div class="footer__bottom">
-            <a href="index.html"><img src="/images/footer/logo.png" alt="footer_logo" class="footer__logo"></a>
+            <a th:href="@{/mainpage}"><img src="/images/footer/logo.png" alt="footer_logo" class="footer__logo"></a>
             <a href="#"><img src="/images/footer/telegram.svg" alt="telegram" class="telegram__logo"></a>
             <a href="#"><img src="/images/footer/vk.svg" alt="vk" class="vk__logo"></a>
             <a href="mailto:zef1rflis@yandex.ru" class="txt footer__creator-mail">zef1rflis@yandex.ru</a>

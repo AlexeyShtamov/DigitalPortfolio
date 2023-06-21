@@ -31,13 +31,13 @@ public class Questionnaire {
     private String infoAboutStrongAndWeak;
     @OneToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
-    private Person user;
+    private Person person;
 
     public Questionnaire(int id, String infoAboutProfession,
                          String infoAboutProjects, int infoAboutExperience,
                          String infoAboutWorkAtHome,
                          String infoAboutGettingInformation, String infoAboutGoals,
-                         String additionalInfo, String infoAboutStrongAndWeak, Person user) {
+                         String additionalInfo, String infoAboutStrongAndWeak, Person person) {
         this.id = id;
         this.infoAboutProfession = infoAboutProfession;
         this.infoAboutProjects = infoAboutProjects;
@@ -47,7 +47,7 @@ public class Questionnaire {
         this.infoAboutGoals = infoAboutGoals;
         this.additionalInfo = additionalInfo;
         this.infoAboutStrongAndWeak = infoAboutStrongAndWeak;
-        this.user = user;
+        this.person = person;
     }
 
     public Questionnaire(){
@@ -122,12 +122,12 @@ public class Questionnaire {
         this.additionalInfo = additionalInfo;
     }
 
-    public Person getUser() {
-        return user;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setUser(Person user) {
-        this.user = user;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     public int getId() {

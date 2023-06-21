@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,21 +17,21 @@
 <div class="header">
     <div class="header__section">
         <a th:href="@{/mainpage}"><img src="/images/header/logo.png" alt="logo" class="header__logo"></a>
-        <a th:href="@{/teams}" class="header__item specialists">Специалистам</a>
-        <a th:href="@{/specialists}" class="header__item teams">Командам</a>
+        <a th:href="@{/1/allTeams}" class="header__item specialists">Специалистам</a>
+        <a th:href="@{/0/allUsers}" class="header__item teams">Командам</a>
         <a href="#" class="header__item search" id="search__js" onclick="openSearch()">Поиск</a>
         <a href="#" class="header__item feedbacks">Мои отклики</a>
     </div>
     <div class="header__section">
-        <div class="bell"><a th:href="@{/user}"><img src="/images/header/bell.svg" alt="bell"></a></div>
+        <div class="bell"><a th:href="@{/{team}(team=${person.getTeam()})}"><img src="/images/header/bell.svg" alt="bell"></a></div>
         <div class="profile__avatar">
             <!--аватар пользователя получать с бд-->
             <img src="/images/header/none_avatar.svg" alt="profile" onclick="openProfile()">
         </div>
         <div id="login__window">
             <div class="login__window__box">
-                <a href="login.html" class="profile__button login__button txt">Войти</a>
-                <a href="registration.html" class="profile__button register__button txt">Зарегистрироваться</a>
+                <a th:href="@{/auth/login}" class="profile__button login__button txt">Войти</a>
+                <a th:href="@{/auth/registration}" class="profile__button register__button txt">Зарегистрироваться</a>
             </div>
         </div>
     </div>
@@ -66,37 +66,37 @@
         <div class="portfolio__list">
             <ul class="portfolio__ul">
                 <li onclick="goToPagePortfolio()" class="portfolio__one"> <!--Всё будет меняться на данные из бд-->
-                    <img src="/images/main/index__cover.jpg" alt="team__logo" class="portfolio__logo">
-                    <a th:href="@{/portfolio/red}" class="portfolio__name txt13">Название портфолио(ФИО)</a>
-                    <span class="portfolio__description txt">Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио</span>
+                    <img th:src="${'/images/logo/' + portfolios.get(0).getFileName()}" alt="team__logo" class="portfolio__logo">
+                    <a th:href="@{/portfolio/all/{id}(id=${portfolios.get(0).getId()})}" th:text="${portfolios.get(0).portfolioName}" class="portfolio__name txt13">Название портфолио(ФИО)</a>
+                    <span th:text="${portfolios.get(0).url}" class="portfolio__description txt">Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио</span>
                     <span class="portfolio__time txt6">0 часов 0 минут</span>
-                    <button class="respond__btn txt">Выбрать</button>
+                    <button th:href="@{/portfolio/all/{id}(id=${portfolios.get(0).getId()})}" class="respond__btn txt">Выбрать</button>
                 </li>
                 <li onclick="goToPagePortfolio()" class="portfolio__two"> <!--Всё будет меняться на данные из бд-->
-                    <img src="/images/main/index__cover.jpg" alt="team__logo" class="portfolio__logo">
-                    <a th:href="@{/portfolio/red}" class="portfolio__name txt13">Название портфолио(ФИО)</a>
-                    <span class="portfolio__description txt">Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио</span>
+                    <img th:src="${'/images/logo/' + portfolios.get(1).getFileName()}" alt="team__logo" class="portfolio__logo">
+                    <a th:href="@{/portfolio/all/{id}(id=${portfolios.get(1).getId()})}" th:text="${portfolios.get(1).portfolioName}" class="portfolio__name txt13">Название портфолио(ФИО)</a>
+                    <span th:text="${portfolios.get(1).url}" class="portfolio__description txt">Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио</span>
                     <span class="portfolio__time txt6">0 часов 0 минут</span>
-                    <button class="respond__btn txt">Выбрать</button>
+                    <button th:href="@{/portfolio/all/{id}(id=${portfolios.get(0).getId()})}" class="respond__btn txt">Выбрать</button>
                 </li>
                 <li onclick="goToPagePortfolio()" class="portfolio__three"> <!--Всё будет меняться на данные из бд-->
-                    <img src="/images/main/index__cover.jpg" alt="team__logo" class="portfolio__logo">
-                    <a th:href="@{/portfolio/red}" class="portfolio__name txt13">Название портфолио(ФИО)</a>
-                    <span class="portfolio__description txt">Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио</span>
+                    <img th:src="${'/images/logo/' + portfolios.get(2).getFileName()}" alt="team__logo" class="portfolio__logo">
+                    <a th:href="@{/portfolio/all/{id}(id=${portfolios.get(2).getId()})}" th:text="${portfolios.get(2).portfolioName}" class="portfolio__name txt13">Название портфолио(ФИО)</a>
+                    <span th:text="${portfolios.get(2).url}" class="portfolio__description txt">Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио</span>
                     <span class="portfolio__time txt6">0 часов 0 минут</span>
-                    <button class="respond__btn txt">Выбрать</button>
+                    <button th:href="@{/portfolio/all/{id}(id=${portfolios.get(0).getId()})}" class="respond__btn txt">Выбрать</button>
                 </li>
                 <li onclick="goToPagePortfolio()" class="portfolio__four"> <!--Всё будет меняться на данные из бд-->
-                    <img src="/images/main/index__cover.jpg" alt="team__logo" class="portfolio__logo">
-                    <a th:href="@{/portfolio/red}" class="portfolio__name txt13">Название портфолио(ФИО)</a>
-                    <span class="portfolio__description txt">Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио</span>
+                    <img th:src="${'/images/logo/' + portfolios.get(3).getFileName()}" alt="team__logo" class="portfolio__logo">
+                    <a th:href="@{/portfolio/all/{id}(id=${portfolios.get(3).getId()})}" th:text="${portfolios.get(3).portfolioName}" class="portfolio__name txt13">Название портфолио(ФИО)</a>
+                    <span th:text="${portfolios.get(3).url}" class="portfolio__description txt">Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио</span>
                     <span class="portfolio__time txt6">0 часов 0 минут</span>
-                    <button class="respond__btn txt">Выбрать</button>
+                    <button th:href="@{/portfolio/all/{id}(id=${portfolios.get(0).getId()})}" class="respond__btn txt">Выбрать</button>
                 </li>
                 <li onclick="goToPagePortfolio()" class="portfolio__five"> <!--Всё будет меняться на данные из бд-->
-                    <img src="/images/main/index__cover.jpg" alt="team__logo" class="portfolio__logo">
-                    <a th:href="@{/portfolio/red}" class="portfolio__name txt13">Название портфолио(ФИО)</a>
-                    <span class="portfolio__description txt">Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио</span>
+                    <img th:src="${'/images/logo/' + portfolios.get(4).getFileName()}" alt="team__logo" class="portfolio__logo">
+                    <a th:href="@{/portfolio/all/{id}(id=${portfolios.get(4).getId()})}" th:text="${portfolios.get(4).portfolioName}" class="portfolio__name txt13">Название портфолио(ФИО)</a>
+                    <span th:text="${portfolios.get(4).url}" class="portfolio__description txt">Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио</span>
                     <span class="portfolio__time txt6">0 часов 0 минут</span>
                     <button class="respond__btn txt">Выбрать</button>
                 </li>
@@ -125,7 +125,7 @@
             </div>
         </form>
         <div class="footer__bottom">
-            <a href="index.html"><img src="/images/footer/logo.png" alt="footer_logo" class="footer__logo"></a>
+            <a th:href="@{/mainpage}"><img src="/images/footer/logo.png" alt="footer_logo" class="footer__logo"></a>
             <a href="#"><img src="/images/footer/telegram.svg" alt="telegram" class="telegram__logo"></a>
             <a href="#"><img src="/images/footer/vk.svg" alt="vk" class="vk__logo"></a>
             <a href="mailto:zef1rflis@yandex.ru" class="txt footer__creator-mail">zef1rflis@yandex.ru</a>

@@ -11,7 +11,7 @@
     <script src="/js/script.js"></script>
     <script src="/js/registration.js"></script>
     <script src="/js/jquery/jquery.min.js"></script>
-    <!--<script src="/js/new-acc.js"></script>-->
+    <script src="/js/new-acc.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
@@ -20,21 +20,21 @@
 <div class="header">
     <div class="header__section">
         <a th:href="@{/mainpage}"><img src="/images/header/logo.png" alt="logo" class="header__logo"></a>
-        <a th:href="@{/commands}" class="header__item specialists">Специалистам</a>
-        <a th:href="@{/specialists}" class="header__item teams">Командам</a>
+        <a th:href="@{/1/allTeams}" class="header__item specialists">Специалистам</a>
+        <a th:href="@{/0/allUsers}" class="header__item teams">Командам</a>
         <a href="#" class="header__item search" id="search__js" onclick="openSearch()">Поиск</a>
         <a href="#" class="header__item feedbacks">Мои отклики</a>
     </div>
     <div class="header__section">
-        <div class="bell"><a th:href="@{/user}"><img src="/images/header/bell.svg" alt="bell"></a></div>
+        <div class="bell"><a href="#"><img src="/images/header/bell.svg" alt="bell"></a></div>
         <div class="profile__avatar">
             <!--аватар пользователя получать с бд-->
             <img src="/images/header/none_avatar.svg" alt="profile" onclick="openProfile()">
         </div>
         <div id="login__window">
             <div class="login__window__box">
-                <a href="login.html" class="profile__button login__button txt">Войти</a>
-                <a href="registration.html" class="profile__button register__button txt">Зарегистрироваться</a>
+                <a th:href="@{/auth/login}" class="profile__button login__button txt">Войти</a>
+                <a th:href="@{/auth/registration}" class="profile__button register__button txt">Зарегистрироваться</a>
             </div>
         </div>
     </div>
@@ -70,7 +70,9 @@
             <div id="specialists__window">
                 <h1 class="headline txt5">Добро пожаловать!</h1>
                 <p class="subtitle txt6">Добро пожаловать! Зарегистрируйтесь!</p>
-                <form th:method="POST" th:action="@{/auth/registration}" th:object="${person}" id="registration__specialist">
+                <form th:method="POST" th:action="@{/auth/registration}" th:object="${person}" >
+                    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Такая почта уже есть</div>
+                    <div  style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Неправильный формат пароля</div>
                     <label for="email" class="txt6 label__email">Email</label>
                     <input id="email" th:field="*{email}" type="text" name="username" placeholder="ivanov.ivan@pochta.ru" class="txt input input__email" required>
                     <label for="psw" class="txt6 label__psw">Пароль</label>
@@ -103,15 +105,18 @@
             <div id="teams__window">
                 <h1 class="headline txt5">Добро пожаловать!</h1>
                 <p class="subtitle txt6">Добро пожаловать! Зарегистрируйтесь!</p>
-                <form action="#" id="registration__team">
+                <form th:method="POST" th:action="@{/auth/registration}" th:object="${person}">
+                    <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Неверно</div>
+                    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Такая почта уже есть</div>
+                    <div  style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Неправильный формат пароля</div>
                     <label for="email" class="txt6 label__email">Email</label>
-                    <input type="text" name="username" placeholder="ivanov.ivan@pochta.ru" class="txt input input__email" required>
+                    <input type="text" th:field="*{email}" name="username" placeholder="cool_team@pochta.ru" class="txt input input__email" required>
                     <label for="psw__team" class="txt6 label__psw">Пароль</label>
-                    <input id="psw__team" type="text" name="password" placeholder="Введите пароль..." class="txt input input__psw" required>
+                    <input id="psw__team" th:field="*{password}" type="text" name="password" placeholder="Введите пароль..." class="txt input input__psw" required>
                     <label for="team__name" class="txt6 label__team-name">Название команды</label>
-                    <input id="team__name" type="text" name="team__name" placeholder="Введите название команды..." class="txt input input__team-name" required>
+                    <input id="team__name" th:field="*{username}" type="text" name="team__name" placeholder="Введите название команды..." class="txt input input__team-name" required>
 
-                    <button type="submit" class="txt4 bottom__button__register">Зарегистрироваться</button>
+                    <button  type="submit" class="txt4 bottom__button__register">Зарегистрироваться</button>
                     <button class="bottom__button__google txt4">
                         <img src="/images/main/google__logo.svg" alt="google__logo" class="google__logo">
                         Войти с Google
@@ -134,7 +139,7 @@
             </div>
         </form>
         <div class="footer__bottom">
-            <a href="index.html"><img src="/images/footer/logo.png" alt="footer_logo" class="footer__logo"></a>
+            <a th:href="@{/mainpage}"><img src="/images/footer/logo.png" alt="footer_logo" class="footer__logo"></a>
             <a href="#"><img src="/images/footer/telegram.svg" alt="telegram" class="telegram__logo"></a>
             <a href="#"><img src="/images/footer/vk.svg" alt="vk" class="vk__logo"></a>
             <a href="mailto:zef1rflis@yandex.ru" class="txt footer__creator-mail">zef1rflis@yandex.ru</a>

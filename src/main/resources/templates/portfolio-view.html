@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,26 +14,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="header__section">
-  <a th:href="@{/mainpage}"><img src="/images/header/logo.png" alt="logo" class="header__logo"></a>
-  <a th:href="@{/teams}" class="header__item specialists">Специалистам</a>
-  <a th:href="@{/specialists}" class="header__item teams">Командам</a>
-  <a href="#" class="header__item search" id="search__js" onclick="openSearch()">Поиск</a>
-  <a href="#" class="header__item feedbacks">Мои отклики</a>
-</div>
-<div class="header__section">
-  <div class="bell"><a th:href="@{/user}"><img src="/images/header/bell.svg" alt="bell"></a></div>
-  <div class="profile__avatar">
-    <!--аватар пользователя получать с бд-->
-    <img src="/images/header/none_avatar.svg" alt="profile" onclick="openProfile()">
+<div class="header">
+  <div class="header__section">
+    <a th:href="@{/mainpage}"><img src="/images/header/logo.png" alt="logo" class="header__logo"></a>
+    <a th:href="@{/1/allTeams}" class="header__item specialists">Специалистам</a>
+    <a th:href="@{/0/allUsers}" class="header__item teams">Командам</a>
+    <a href="#" class="header__item search" id="search__js" onclick="openSearch()">Поиск</a>
+    <a href="#" class="header__item feedbacks">Мои отклики</a>
   </div>
-  <div id="login__window">
-    <div class="login__window__box">
-      <a href="login.html" class="profile__button login__button txt">Войти</a>
-      <a href="registration.html" class="profile__button register__button txt">Зарегистрироваться</a>
+  <div class="header__section">
+    <div class="bell"><a th:href="@{/{team}(team=${person.getTeam()})}"><img src="/images/header/bell.svg" alt="bell"></a></div>
+    <div class="profile__avatar">
+      <!--аватар пользователя получать с бд-->
+      <img src="/images/header/none_avatar.svg" alt="profile" onclick="openProfile()">
+    </div>
+    <div id="login__window">
+      <div class="login__window__box">
+        <a th:href="@{/auth/login}" class="profile__button login__button txt">Войти</a>
+        <a th:href="@{/auth/registration}" class="profile__button register__button txt">Зарегистрироваться</a>
+      </div>
     </div>
   </div>
-</div>
   <div id="search__box">
     <input class="search-txt" type="search" placeholder="Введите профессию">
     <div class="search-bg"><img src="/images/header/search-bg.png" alt="search"></div>
@@ -51,15 +52,43 @@
 </div>
 <div class="main">
   <div class="portfolio__main">
-    <img src="/images/main/index__cover.jpg" alt="logo" class="portfolio__cover">
-    <span class="portfolio__name txt8">Название портфолио</span>
-    <div class="portfolio__description txt">Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио Описание портфолио</div>
+    <img th:src="${'/images/logo/' + portfolio.getFileName()}" alt="logo" class="portfolio__cover">
+    <span th:text="${portfolio.portfolioName}" class="portfolio__name txt8">Название портфолио
+      <input type="hidden" id="fileName" th:value="${portfolio.getPortfolioFileName()}" />
+      <button id="downloadButton">Скачать</button>
+  <script>
+    const downloadButton = document.getElementById('downloadButton');
+    const fileName = document.getElementById('fileName').value;
+    downloadButton.addEventListener('click', () => {
+      fetch('/download')
+              .then(response => response.blob())
+              .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = fileName; // Задайте имя файла
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+              });
+    });
+  </script>
+    </span>
+    <div class="portfolio__description txt">
+    <p th:text="${'Лет опыта: ' + questionnaire.infoAboutExperience}"></p>
+    <p th:text="${'Самые сложные проекты, над которыми я работал: ' + questionnaire.infoAboutProjects}"></p>
+    <p th:text="${'Мой опыт работы удаленно и трудности при работе таким путем: ' + questionnaire.infoAboutWorkAtHome}"></p>
+    <p th:text="${'Как я остаюсь в курсе последних тенденций и технологий в моей области: ' + questionnaire.infoAboutGettingInformation}"></p>
+    <p th:text="${'Мои долгосрочные карьерные цели: ' + questionnaire.infoAboutGoals}"></p>
+    <p th:text="${'Дополнительно: ' + questionnaire.additionalInfo}"></p>
+    </div>
   </div>
   <div class="user__info">
-    <img src="/images/main/test__img.jpg" alt="user__logo" class="user__logo">
-    <a href="#" class="user__name txt8">Имя Пользователя</a><!--Перекидывать на профиль пользователя-->
+    <img th:src="${'/images/face/' + portfolio.getPerson().getFaceFileName()}" alt="user__logo" class="user__logo">
+    <a href="#" th:text="${portfolio.getPerson().splitName.get(0) + ' ' + portfolio.getPerson().splitName.get(1)}" class="user__name txt8">Имя Пользователя</a><!--Перекидывать на профиль пользователя-->
     <span class="user__email txt">Почта пользователя</span>
-    <a href="mailto:zef1rflis@yandex.ru" class="txt13 user__email_a">zef1rflis@yandex.ru</a>
+    <a th:text="${portfolio.getPerson().email}" th:href="${'mailto:' + portfolio.getPerson().email}" class="txt13 user__email_a">zef1rflis@yandex.ru</a>
     <button class="user__invite">Пригласить в команду</button>
   </div>
 </div>
@@ -72,7 +101,7 @@
     <!--отправлять почту в бд-->
   </div>
   <div class="footer__bottom">
-    <a href="index.html"><img src="/images/footer/logo.png" alt="footer_logo" class="footer__logo"></a>
+    <a th:href="@{/mainpage}"><img src="/images/footer/logo.png" alt="footer_logo" class="footer__logo"></a>
     <a href="#"><img src="/images/footer/telegram.svg" alt="telegram" class="telegram__logo"></a>
     <a href="#"><img src="/images/footer/vk.svg" alt="vk" class="vk__logo"></a>
     <a href="mailto:zef1rflis@yandex.ru" class="txt footer__creator-mail">zef1rflis@yandex.ru</a>

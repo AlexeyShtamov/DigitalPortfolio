@@ -11,27 +11,30 @@ public class Portfolio {
     private int id;
     @Column(name = "file", columnDefinition = "BLOB")
     private byte[] file;
+    @Column(name = "file_name")
+    private String fileName;
+    @Column(name = "portfolio_file_name")
+    private String portfolioFileName;
     @Column(name = "url")
     private String url;
     @Column(name = "portfolio_name")
     private String portfolioName;
     @OneToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
-    private Person user;
+    private Person person;
 
 //    @OneToOne(mappedBy = "portfolio")
 //    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 //    private PortfolioImage image;
-    @Column(name = "image", columnDefinition = "BLOB")
-    public byte[] image;
 
-    public Portfolio(int id, byte[] file, byte[] image, String url, String portfolioName, Person user) {
+    public Portfolio(int id, byte[] file, String url, String portfolioName, Person person, String fileName, String portfolioFileName) {
         this.id = id;
         this.file = file;
-        this.image = image;
         this.url = url;
         this.portfolioName = portfolioName;
-        this.user = user;
+        this.person = person;
+        this.fileName = fileName;
+        this.portfolioFileName = portfolioFileName;
     }
        public Portfolio(){
 
@@ -44,15 +47,6 @@ public class Portfolio {
     public void setFile(byte[] file) {
         this.file = file;
     }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
     public String getUrl() {
         return url;
     }
@@ -65,16 +59,16 @@ public class Portfolio {
         return portfolioName;
     }
 
-    public void setPortfolioName(String name) {
-        this.portfolioName = name;
+    public void setPortfolioName(String portfolioName) {
+        this.portfolioName = portfolioName;
     }
 
-    public Person getUser() {
-        return user;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setUser(Person user) {
-        this.user = user;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     public int getId() {
@@ -85,4 +79,19 @@ public class Portfolio {
         this.id = id;
     }
 
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getPortfolioFileName() {
+        return portfolioFileName;
+    }
+
+    public void setPortfolioFileName(String portfolioFileName) {
+        this.portfolioFileName = portfolioFileName;
+    }
 }

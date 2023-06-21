@@ -7,9 +7,8 @@
   <title>Digital Portfolio</title>
   <link rel="icon" href="/images/footer/logo.png" type="image/x-icon">
   <link rel="stylesheet" href="/css/global.css">
-  <link rel="stylesheet" href="/css/profile-teams.css">
+  <link rel="stylesheet" href="/css/add-view.css">
   <script src="/js/script.js"></script>
-  <script src="/js/profile.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
@@ -52,60 +51,21 @@
   </div>
 </div>
 <div class="main">
-  <div class="left__links">
-    <img src="/images/main/test__img.jpg" alt="avatar" class="profile__avatar__main"><!--Аватар пользователя-->
-    <a href="#" class="change__avatar" onclick="changeAvatar()">
-      <img src="/images/main/edit.svg" alt="edit" class="edit__avatar">
-      <span class="text__edit txt">Изменить аватарку</span>
-    </a>
-    <h1 th:text="${person.username}" class="team__name txt5">Название команды</h1>
-    <ul class="profile__links txt">
-      <li><button class="profile__buttons txt">Профиль</button></li>
-      <li><button class="profile__buttons txt">Уведомления</button></li>
-      <li><button class="profile__buttons txt">Настройки</button></li>
-      <li><a href="/logout" class="profile__buttons txt">Выйти</a></li>
-    </ul>
+  <div class="team__main">
+    <img th:src="${'/images/logo/' + teaminfo.getTeamFileName()}" alt="logo" class="team__cover">
+    <span th:text="${teaminfo.name}" class="team__name txt8">Название объявления</span>
+    <span th:text="${'Количество нужных человек для команды: ' + teaminfo.countOfPerson}"class="people_count txt13">2</span>
+    <div th:text="${teaminfo.description}" class="team__description txt">Описание объявления Описание объявления Описание объявленияОписание объявленияОписание объявленияОписание объявления Описание объявления Описание объявления Описание объявления</div>
   </div>
-  <div class="personal__data">
-    <span class="pd__h1 txt8">Личные данные</span>
-    <form th:method="POST" th:action="@{/0/update}" th:object="${person}">
-      <span class="fio txt">Название команды</span>
-      <input th:field="*{username}" placeholder="Введите название" type="text" class="fio__input txt">
-      <span class="psw txt">Пароль</span>
-      <input type="password" th:field="*{password}" name="password" id="password__input" placeholder="Введите пароль" class="txt">
-      <a href="#" class="password__control txt" onclick="return show_hide_password();">Показать пароль</a>
-      <span class="email txt">E-mail</span>
-      <input type="text" th:field="*{email}" placeholder="Введите почту" class="email__input txt">
-    <div class="buttons__pd">
-      <button class="but__cancel txt">Отмена</button>
-      <button type="submit" class="but__OK txt">ОК</button>
-    </div>
-    </form>
-  </div>
-  <div class="ad">
-    <span class="add__ad txt8">Добавьте объявление</span>
-    <form th:method="POST" th:object="${teamInfo}" th:action="@{/teaminfo/save}" enctype="multipart/form-data">
-      <span class="add__title txt">Введите название объявления</span>
-      <input th:field="*{name}" type="text" placeholder="Введите название" class="add__input txt">
-      <span class="people__count txt">Сколько человек вы ищете в команду</span>
-      <input th:field="*{countOfPerson}" type="number" min="0" max="10" placeholder="Введите количество" class="people__input txt">
-      <span class="add_description txt">Добавьте описание для вашего объявления</span>
-      <input th:field="*{description}" type="text" placeholder="Описание..." class="description__input txt">
-      <span class="change__cover txt">Измените обложкку объявления</span>
-      <img th:src="${'/images/logo/' + teamInfo.getTeamFileName()}" alt="edit" class="edit__team-cover">
-      <div class="edit__cover">
-        <span class="text__edit__logo txt" >
-          <input  type="file" name="imageFile" id="imageFile">
-        </span>
-      </div>
-    <div class="buttons__cover">
-      <button class="but__cancel txt">Отмена</button>
-      <button type="submit" class="but__OK txt">ОК</button>
-    </div>
-    </form>
+  <div class="user__info">
+    <img src="/images/main/test__img.jpg" alt="user__logo" class="user__logo">
+    <a href="#" th:text="${team.username}" class="user__name txt8">Название команды</a><!--Перекидывать на профиль пользователя-->
+    <span class="user__email txt">Почта команды</span>
+    <a th:text="${team.email}" th:href="${'mailto:' + team.email}" class="txt13 user__email_a">zef1rflis@yandex.ru</a>
+    <button class="user__invite">Откликнуться</button>
   </div>
 </div>
-<div class="footer" style="top: 1500px;">
+<div class="footer" style="top: 1000px;">
   <div class="txt email__text">Подпишитесь на нашу рассылку, чтобы получать актуальную информацию по Вашим запросам.</div>
   <div class="email__container">
     <div class="txt email__headline">Эл. почта:</div>

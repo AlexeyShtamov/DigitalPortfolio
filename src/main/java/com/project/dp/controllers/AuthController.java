@@ -38,7 +38,10 @@ public class AuthController {
         personValidator.validate(person, bindingResult);
         if(bindingResult.hasErrors())
             return "registration";
-        person.setUsername("User_" + ((int)(Math.random()*312)));
+        if(person.getUsername() != null)
+            person.setTeam(1);
+        else
+            person.setUsername("User " + ((int)(Math.random()*312)));
         registrationService.register(person);
         return "redirect:/login";
     }

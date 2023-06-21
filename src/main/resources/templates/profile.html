@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,21 +18,21 @@
 <div class="header">
     <div class="header__section">
         <a th:href="@{/mainpage}"><img src="/images/header/logo.png" alt="logo" class="header__logo"></a>
-        <a th:href="@{/teams}" class="header__item specialists">Специалистам</a>
-        <a th:href="@{/specialists}" class="header__item teams">Командам</a>
+        <a th:href="@{/1/allTeams}" class="header__item specialists">Специалистам</a>
+        <a th:href="@{/0/allUsers}" class="header__item teams">Командам</a>
         <a href="#" class="header__item search" id="search__js" onclick="openSearch()">Поиск</a>
         <a href="#" class="header__item feedbacks">Мои отклики</a>
     </div>
     <div class="header__section">
-        <div class="bell"><a th:href="@{/user}"><img src="/images/header/bell.svg" alt="bell"></a></div>
+        <div class="bell"><a th:href="@{/{team}(team=${person.getTeam()})}"><img src="/images/header/bell.svg" alt="bell"></a></div>
         <div class="profile__avatar">
             <!--аватар пользователя получать с бд-->
             <img src="/images/header/none_avatar.svg" alt="profile" onclick="openProfile()">
         </div>
         <div id="login__window">
             <div class="login__window__box">
-                <a th:href="@{/user/login}" class="profile__button login__button txt">Войти</a>
-                <a th:href="@{/user/registration}" class="profile__button register__button txt">Зарегистрироваться</a>
+                <a th:href="@{/auth/login}" class="profile__button login__button txt">Войти</a>
+                <a th:href="@{/auth/registration}" class="profile__button register__button txt">Зарегистрироваться</a>
             </div>
         </div>
     </div>
@@ -51,13 +51,12 @@
         </div>
     </div>
 </div>
-<a th:href="@{/teams/red}">Перейти в профиль для команд</a><br>
 <div id="window__avatar__input">
     <input type="file" class="file__input" id="file__input_id1">
     <label for="file__input_id1" id="file__label1">
         <span class="txt9 avatar__input">Прикрепите файл</span>
         <img src="/images/main/file__input.svg" alt="file__input" class="img__file__input1"> <!--тут пользователь выгружает файл с аваркой
-            не нужно где-то ему показывать, что файл сохранён, сразу заменять аватарку на файл, который он выгрузил и заменять его в бд, class у аватарки - 
+            не нужно где-то ему показывать, что файл сохранён, сразу заменять аватарку на файл, который он выгрузил и заменять его в бд, class у аватарки -
             profile__avatar__main-->
     </label>
     <span class="txt9 close" onclick="changeAvatar()">X</span>
@@ -66,93 +65,108 @@
     <input type="file" class="file__input" id="file__input_id1">
     <label for="file__input_id1" id="file__label1">
         <span class="txt9 avatar__input">Прикрепите файл</span>
-        <img src="/images/main/file__input.svg" alt="file__input" class="img__file__input1"> <!--тут пользователь выгружает обложку портфолио, 
+        <img src="/images/main/file__input.svg" alt="file__input" class="img__file__input1"> <!--тут пользователь выгружает обложку портфолио,
             изменить img с id portfolio__logo и выгрузить его в бд-->
     </label>
     <span class="txt9 close" onclick="changeCover()">X</span>
 </div>
 <div class="main">
     <div class="left__links">
-        <img src="/images/main/test__img.jpg" alt="avatar" class="profile__avatar__main"><!--Аватар пользователя-->
+        <img th:src="${'/images/face/' + person.getFaceFileName()}" alt="avatar" class="profile__avatar__main"><!--Аватар пользователя-->
         <a href="#" class="change__avatar" onclick="changeAvatar()">
-            <img src="/images/main/edit.svg" alt="edit" class="edit__avatar">
-            <span class="text__edit txt">Изменить аватарку</span>
+            <form th:method="POST" th:object="${person}" th:action="@{/0/face}" enctype="multipart/form-data">
+            <span class="text__edit txt">
+                <input  type="file" name="faceImage" id="faceImage">
+                <br>
+                <br>
+                <button type="submit" class="but__OK txt">ОК</button>
+            </span>
+            </form>
         </a>
-        <h1 class="user__name txt5">Имя пользователя</h1>
+        <h1 th:text="${person.getSplitName().get(0) + ' ' + person.getSplitName().get(1)}" class="user__name txt5">
+            Имя пользователя</h1>
         <ul class="profile__links txt">
             <li><button class="profile__buttons txt">Профиль</button></li>
             <li><button class="profile__buttons txt">Уведомления</button></li>
             <li><button class="profile__buttons txt">Настройки</button></li>
-            <li><button class="profile__buttons txt">Выйти</button></li>
+            <li><a href="/logout" class="profile__buttons txt"> Выйти</a></li>
         </ul>
     </div>
     <div id="profile">
         <h1 class="txt8 personal__data">Личные данные</h1>
         <div class="personal__data">
-            <form action="personal__data">
+            <form th:object="${person}" th:method="POST" th:action="@{/0/update}">
                 <span class="fio txt">ФИО</span>
-                <input type="text" placeholder="Введите фио" class="fio__input txt">
+                <input th:field="*{username}" type="text" placeholder="Введите фио" class="fio__input txt">
                 <span class="psw txt">Пароль</span>
-                <input type="password" id="password__input"  th:placeholder="Введите пароль" name="password" class="txt">
+                <input th:field="*{password}" type="password" id="password__input" placeholder="Введите пароль" name="password" class="txt">
                 <a href="#" class="password__control txt" onclick="return show_hide_password();">Показать пароль</a>
                 <span class="email txt">E-mail</span>
-                <input type="text" placeholder="Введите почту" class="email__input txt">
-            </form>
+                <input th:field="*{email}" type="text" placeholder="Введите почту" class="email__input txt">
             <div class="buttons__pd">
                 <button class="but__cancel txt">Отмена</button>
-                <button class="but__OK txt">ОК</button>
+                <button type="submit" class="but__OK txt">ОК</button>
             </div>
+            </form>
         </div>
         <div class="questionnaire">
             <span class="txt8">Анкета</span>
-            <form action="questionnaire">
-                <span class="txt field__know">Область знаний</span>
-                <select name="field__knowledge" class="txt field__knowledge">
-                    <option value="0" disabled selected hidden>Укажите область знаний...</option>
+            <form th:method="POST" th:object="${questionnaire}" th:action="@{/questionnaire}">
+                <span class="txt field__know">Область знаний:</span>
+                <select th:field="*{infoAboutProfession}" name="field__knowledge" class="txt field__knowledge">
+                    <option value="0" disabled selected hidden>Выберите вашу профессию...</option>
+                    <option value="Разработчик сайта" class="txt4 select__choice">Разработчик сайта</option>
+                    <option value="Дизайнер" class="txt4 select__choice">Дизайнер</option>
+                    <option value="Программист" class="txt4 select__choice">Программист</option>
+                    <option value="Разработчик игр" class="txt4 select__choice">Разработчик игр</option>
+                    <option value="Специалист по 3D Графике" class="txt4 select__choice">Специалист по 3D Графике</option>
+                    <option value="Разработчик моб. приложений" class="txt4 select__choice">Разработчик моб. приложений</option>
                 </select>
-                <span class="txt projects">Каковы некоторые из самых сложных проектов, над которыми вы работали?</span>
-                <input type="text" class="txt projects_input" placeholder="Расскажите самые сложные проекты...">
-                <span class="txt distant__work">Работали ли вы когда-нибудь удаленно? Возникали и у вас трудности при работе таким путем?</span>
-                <input type="text" class="txt distant__input" placeholder="Укажите опыт удаленной работы...">
-                <span class="txt goals">Каковы ваши долгосрочные карьерные цели?</span>
-                <input type="text" class="txt goals__input" placeholder="Введите ответ...">
-                <span class="txt years">Сколько лет опыта у вас есть в вашей области?</span>
-                <input type="text" class="txt years__input" placeholder="Укажите опыт...">
-                <span class="txt weaknesses">По вашему мнению, каковы ваши сильные и слабые стороны в вашей профессии?</span>
-                <input type="text" class="txt weaknesses_input" placeholder="Введите ответ...">
-                <span class="txt latest_tech">Как вы остаетесь в курсе последних тенденций и технологий в своей области?</span>
-                <input type="text" class="txt tech_input" placeholder="Введите ответ...">
+                <span class="txt projects">Самые сложные проекты, над которыми я работал:</span>
+                <input th:field="*{infoAboutProjects}" type="text" class="txt projects_input" placeholder="Расскажите самые сложные проекты...">
+                <span class="txt distant__work">Мой опыт работы удаленно и трудности при работе таким путем:</span>
+                <input th:field="*{infoAboutWorkAtHome}" type="text" class="txt distant__input" placeholder="Укажите опыт удаленной работы...">
+                <span class="txt goals">Мои долгосрочные карьерные цели:</span>
+                <input th:field="*{infoAboutGoals}" type="text" class="txt goals__input" placeholder="Введите ответ...">
+                <span class="txt years">Лет опыта:</span>
+                <input th:field="*{infoAboutExperience}" type="text" class="txt years__input" placeholder="Укажите опыт...">
+                <span class="txt weaknesses">Сильные и слабые стороны в моей профессии:</span>
+                <input th:field="*{infoAboutStrongAndWeak}" type="text" class="txt weaknesses_input" placeholder="Введите ответ...">
+                <span  class="txt latest_tech">Как я остаюсь в курсе последних тенденций и технологий в моей области:</span>
+                <input th:field="*{infoAboutGettingInformation}" type="text" class="txt tech_input" placeholder="Введите ответ...">
                 <span class="txt additionally">Дополнительно:</span>
-                <input type="text" class="txt additionally_input" placeholder="Введите ответ...">
-            </form>
+                <input th:field="*{additionalInfo}" type="text" class="txt additionally_input" placeholder="Введите ответ...">
             <div class="buttons__quest">
                 <button class="but__cancel txt">Отмена</button>
                 <button class="but__OK txt">ОК</button>
             </div>
+            </form>
         </div>
         <div class="portfolio__quest">
             <span class="txt8">Портфолио</span>
-            <form action="portfolio">
+            <form th:method="POST" th:object="${portfolio}" th:action="@{/portfolio}" enctype="multipart/form-data">
                 <span class="txt portfolio__name">Название портфолио</span>
-                <input type="text" class="txt" id="portfolio__input__name" placeholder="Мое портфолио">
-                <span class="txt file">Прикрепите файл:</span>
-                <input type="file" class="file__input" id="file__input_id">
+                <input th:field="*{portfolioName}" type="text" class="txt" id="portfolio__input__name" placeholder="Мое портфолио">
+                <span  class="txt file">Прикрепите файл:</span>
                 <label for="file__input_id" id="file__label">
                     <span class="txt9 label__txt">Добавьте сюда портфолио</span>
                     <img src="/images/main/file__input.svg" alt="file__input" class="img__file__input">
+                    <input  type="file" name="dataFile"  id="file__input_id">
                 </label>
                 <span class="txt" id="portfolio__link">Укажите ссылку на ваше портфолио:</span>
-                <input type="text" class="txt portfolio__input__link" placeholder="Введите URL-адрес...">
-                <img src="/images/main/portfolio__logo.png" alt="portfolio logo" id="portfolio__logo">
+                <input th:field="*{url}" type="text" class="txt portfolio__input__link" placeholder="Введите URL-адрес...">
+                <img th:src="${'/images/logo/' + portfolio.getFileName()}" alt="portfolio logo" id="portfolio__logo">
                 <div class="edit__cover">
                     <img src="/images/main/edit.svg" alt="edit" class="edit__portfolio__logo">
-                    <span class="text__edit__logo txt" onclick="changeCover()">Изменить обложку</span>
+                    <span class="text__edit__logo txt" onclick="changeCover()">
+                        <input  type="file" name="imageFile" id="imageFile">
+                    </span>
                 </div>
-            </form>
             <div class="buttons__pq">
                 <button class="but__cancel txt">Отмена</button>
-                <button class="but__OK txt">ОК</button>
+                <button type="submit" class="but__OK txt">ОК</button>
             </div>
+            </form>
         </div>
     </div>
     <div class="notifications__main">
@@ -171,7 +185,7 @@
         <!--отправлять почту в бд-->
     </div>
     <div class="footer__bottom">
-        <a href="index.html"><img src="/images/footer/logo.png" alt="footer_logo" class="footer__logo"></a>
+        <a th:href="@{/mainpage}"><img src="/images/footer/logo.png" alt="footer_logo" class="footer__logo"></a>
         <a href="#"><img src="/images/footer/telegram.svg" alt="telegram" class="telegram__logo"></a>
         <a href="#"><img src="/images/footer/vk.svg" alt="vk" class="vk__logo"></a>
         <a href="mailto:zef1rflis@yandex.ru" class="txt footer__creator-mail">zef1rflis@yandex.ru</a>
